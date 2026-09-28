@@ -71,7 +71,7 @@ export default function AboutContent() {
                   <div>
                     <div className="font-serif font-semibold text-foreground text-sm mb-0.5">Our Location</div>
                     <p className="text-sm text-muted-foreground leading-relaxed">
-                      Matasia, along Kiserean–Matasia Road<br />
+                      Matasia, along Kiserian–Matasia Road<br />
                       Moran Towers, Matasia
                     </p>
                   </div>

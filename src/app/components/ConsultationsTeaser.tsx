@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import AppImage from '@/components/ui/AppImage';
 
-const WHATSAPP_NUMBER = '27000000000';
+const WHATSAPP_NUMBER = '254708261674';
 
 export default function ConsultationsTeaser() {
   const ref = useRef<HTMLElement>(null);

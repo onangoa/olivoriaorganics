@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import AppLogo from '@/components/ui/AppLogo';
 import Icon from '@/components/ui/AppIcon';
 
@@ -14,11 +15,15 @@ const navLinks = [
   { label: 'Contact', href: '/contact' },
 ];
 
-const WHATSAPP_NUMBER = '27000000000';
+const WHATSAPP_NUMBER = '254708261674';
 
 export default function Header() {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const isActive = (href: string) =>
+    href === '/' ? pathname === '/' : Boolean(pathname?.startsWith(href));
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -44,31 +49,31 @@ export default function Header() {
       <header
         className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-background/95 backdrop-blur-md border-b border-border shadow-sm'
+            ? 'bg-background border-b border-border shadow-md'
             : 'bg-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2.5 flex-shrink-0">
-              <AppLogo size={36} />
-              <span className="font-serif font-semibold text-lg text-primary tracking-tight hidden sm:block">
-                OlivoriaOrganics
-              </span>
+            <Link href="/" className="flex items-center flex-shrink-0" aria-label="Olivoria Organics — Home">
+              <AppLogo width={68} height={48} />
             </Link>
 
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center gap-1">
-              {navLinks?.map((link) => (
-                <Link
-                  key={link?.href}
-                  href={link?.href}
-                  className="nav-link px-3 py-2 rounded-md hover:bg-primary/5"
-                >
-                  {link?.label}
-                </Link>
-              ))}
+              {navLinks?.map((link) => {
+                const active = isActive(link?.href ?? '/');
+                return (
+                  <Link
+                    key={link?.href}
+                    href={link?.href ?? '/'}
+                    className={`nav-link px-3 py-2 rounded-md hover:bg-muted ${active ? 'nav-link-active' : ''}`}
+                  >
+                    {link?.label}
+                  </Link>
+                );
+              })}
             </nav>
 
             {/* Right Actions */}
@@ -104,22 +109,27 @@ export default function Header() {
       {/* Mobile Overlay */}
       {mobileOpen && (
         <div
-          className="fixed inset-0 z-40 bg-background/95 backdrop-blur-md lg:hidden"
+          className="fixed inset-0 z-40 bg-background lg:hidden"
           role="dialog"
           aria-modal="true"
         >
           <div className="flex flex-col h-full pt-20 pb-8 px-6">
             <nav className="flex flex-col gap-1 flex-1">
-              {navLinks?.map((link) => (
-                <Link
-                  key={link?.href}
-                  href={link?.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="flex items-center py-4 text-lg font-medium text-foreground border-b border-border hover:text-primary transition-colors"
-                >
-                  {link?.label}
-                </Link>
-              ))}
+              {navLinks?.map((link) => {
+                const active = isActive(link?.href ?? '/');
+                return (
+                  <Link
+                    key={link?.href}
+                    href={link?.href ?? '/'}
+                    onClick={() => setMobileOpen(false)}
+                    className={`flex items-center py-4 text-lg font-medium border-b border-border transition-colors ${
+                      active ? 'text-primary' : 'text-foreground hover:text-primary'
+                    }`}
+                  >
+                    {link?.label}
+                  </Link>
+                );
+              })}
             </nav>
             <button
               onClick={() => { handleWhatsApp(); setMobileOpen(false); }}

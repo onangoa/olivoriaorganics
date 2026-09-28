@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 
-const WHATSAPP_NUMBER = '27000000000';
+const WHATSAPP_NUMBER = '254708261674';
 
 export default function ContactContent() {
   const ref = useRef<HTMLDivElement>(null);
@@ -76,10 +76,10 @@ export default function ContactContent() {
             {/* Contact Details */}
             <div className="scroll-reveal scroll-reveal-delay-1 grid grid-cols-1 sm:grid-cols-2 gap-5">
               {[
-                { icon: '📞', label: 'Phone', value: '+27 000 000 000', href: 'tel:+27000000000' },
-                { icon: '✉️', label: 'Email', value: 'hello@olivoriaorganics.co.za', href: 'mailto:hello@olivoriaorganics.co.za' },
-                { icon: '📍', label: 'Location', value: 'South Africa', href: undefined },
-                { icon: '🕐', label: 'Hours', value: 'Mon–Fri: 8am–5pm\nSat: 9am–1pm', href: undefined },
+                { icon: '📞', label: 'Phone', value: '+254 708 261674', href: 'tel:+254708261674' },
+                { icon: '✉️', label: 'Email', value: 'hello@olivoriaorganics.co.ke', href: 'mailto:hello@olivoriaorganics.co.ke' },
+                { icon: '📍', label: 'Location', value: 'Matasia, along Kiserian–Matasia Road\nMoran Towers, Matasia', href: undefined },
+                { icon: '🕐', label: 'Hours', value: 'Mon–Thu: 9:00 AM – 7:30 PM\nFri: 9:00 AM – 3:00 PM\nSat: Closed\nSun: 9:00 AM – 6:30 PM', href: undefined },
               ].map((item) => (
                 <div key={item.label} className="bg-card border border-border rounded-xl p-5">
                   <div className="text-2xl mb-2">{item.icon}</div>
@@ -145,7 +145,7 @@ export default function ContactContent() {
                       required
                       value={formData.emailOrPhone}
                       onChange={handleChange}
-                      placeholder="your@email.com or +27 000 000 000"
+                      placeholder="your@email.com or +254 708 261674"
                       className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all"
                     />
                   </div>

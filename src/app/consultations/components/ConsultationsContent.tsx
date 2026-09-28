@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import AppImage from '@/components/ui/AppImage';
 
-const WHATSAPP_NUMBER = '27000000000';
+const WHATSAPP_NUMBER = '254708261674';
 
 const faqs = [
 {

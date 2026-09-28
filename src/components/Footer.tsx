@@ -13,7 +13,7 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2.5 mb-4">
-              <AppLogo size={32} />
+              <AppLogo width={45} height={32} />
               <span className="font-serif font-semibold text-base text-primary">OlivoriaOrganics</span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed mb-4">
@@ -21,7 +21,7 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-3">
               <a
-                href="https://wa.me/27000000000?text=Hello%2C%20I%20would%20like%20to%20learn%20more%20about%20OlivoriaOrganics."
+                href="https://wa.me/254708261674?text=Hello%2C%20I%20would%20like%20to%20learn%20more%20about%20OlivoriaOrganics."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="whatsapp-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold"
@@ -75,19 +75,19 @@ export default function Footer() {
             <ul className="space-y-2.5 text-sm text-muted-foreground">
               <li className="flex items-start gap-2">
                 <span className="mt-0.5 text-accent">📍</span>
-                <span>South Africa</span>
+                <span>Matasia, along Kiserian–Matasia Road,<br />Moran Towers, Matasia</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="mt-0.5 text-accent">📞</span>
-                <a href="tel:+27000000000" className="hover:text-primary transition-colors">+27 000 000 000</a>
+                <a href="tel:+254708261674" className="hover:text-primary transition-colors">+254 708 261674</a>
               </li>
               <li className="flex items-start gap-2">
                 <span className="mt-0.5 text-accent">✉️</span>
-                <a href="mailto:hello@olivoriaorganics.co.za" className="hover:text-primary transition-colors">hello@olivoriaorganics.co.za</a>
+                <a href="mailto:hello@olivoriaorganics.co.ke" className="hover:text-primary transition-colors">hello@olivoriaorganics.co.ke</a>
               </li>
               <li className="flex items-start gap-2">
                 <span className="mt-0.5 text-accent">🕐</span>
-                <span>Mon–Fri: 8am–5pm<br />Sat: 9am–1pm</span>
+                <span>Mon–Thu: 9:00 AM – 7:30 PM<br />Fri: 9:00 AM – 3:00 PM<br />Sat: Closed<br />Sun: 9:00 AM – 6:30 PM</span>
               </li>
             </ul>
           </div>

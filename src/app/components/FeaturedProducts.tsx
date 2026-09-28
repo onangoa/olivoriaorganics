@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import AppImage from '@/components/ui/AppImage';
 
-const WHATSAPP_NUMBER = '27000000000';
+const WHATSAPP_NUMBER = '254708261674';
 
 const featuredProducts = [
 {
@@ -12,7 +12,7 @@ const featuredProducts = [
   name: 'Organic Moringa Powder',
   category: 'Natural Supplements',
   description: 'Traditionally used to support energy and nutritional wellbeing. Rich in vitamins, minerals, and antioxidants.',
-  price: 'R 185',
+  price: 'KSh 1,350',
   availability: 'In Stock',
   image: "https://img.rocket.new/generatedImages/rocket_gen_img_1c760dfda-1784615633062.png",
   alt: 'Green moringa powder in a wooden bowl surrounded by fresh moringa leaves on a light cream background'
@@ -22,7 +22,7 @@ const featuredProducts = [
   name: 'Rooibos Wellness Tea',
   category: 'Herbal Teas',
   description: 'South African rooibos blended with chamomile and lavender. May support relaxation and restful sleep.',
-  price: 'R 120',
+  price: 'KSh 850',
   availability: 'In Stock',
   image: "https://img.rocket.new/generatedImages/rocket_gen_img_1ead2fd92-1780244500039.png",
   alt: 'Warm cup of rooibos herbal tea with dried flowers and leaves on a wooden tray in soft natural light'
@@ -32,7 +32,7 @@ const featuredProducts = [
   name: 'Cold-Pressed Coconut Oil',
   category: 'Organic Foods',
   description: 'Unrefined, virgin coconut oil. Part of a healthy lifestyle for cooking and natural personal care.',
-  price: 'R 210',
+  price: 'KSh 1,500',
   availability: 'In Stock',
   image: "https://img.rocket.new/generatedImages/rocket_gen_img_154257613-1772368886880.png",
   alt: 'Glass jar of clear cold-pressed coconut oil with fresh coconut halves on a clean white surface'
@@ -42,7 +42,7 @@ const featuredProducts = [
   name: 'Organic Turmeric Blend',
   category: 'Herbs & Botanicals',
   description: 'Whole-food turmeric combined with black pepper for enhanced absorption. Traditionally used for general wellness.',
-  price: 'R 155',
+  price: 'KSh 1,100',
   availability: 'In Stock',
   image: "https://img.rocket.new/generatedImages/rocket_gen_img_12d768334-1766740607394.png",
   alt: 'Vibrant yellow turmeric powder and fresh turmeric root arranged on a wooden surface with warm earthy tones'
@@ -52,7 +52,7 @@ const featuredProducts = [
   name: 'Organic Hemp Seeds',
   category: 'Organic Seeds',
   description: 'Hulled organic hemp seeds. A complete plant protein source, excellent for smoothies and salads.',
-  price: 'R 175',
+  price: 'KSh 1,250',
   availability: 'In Stock',
   image: "https://img.rocket.new/generatedImages/rocket_gen_img_1e74044d8-1772057607386.png",
   alt: 'Small bowl of organic hemp seeds on a natural linen cloth with green plants in the soft-focus background'
@@ -62,7 +62,7 @@ const featuredProducts = [
   name: 'Pure Aloe Vera Gel',
   category: 'Natural Personal Care',
   description: 'Certified organic aloe vera gel. Traditionally used to support skin health and soothing care.',
-  price: 'R 135',
+  price: 'KSh 950',
   availability: 'In Stock',
   image: "https://images.unsplash.com/photo-1485077266967-bc48091c0ea2",
   alt: 'Fresh aloe vera plant with clear gel on a bright white background in clean natural setting'
