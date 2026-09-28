@@ -44,14 +44,14 @@ export default function HeroSection() {
       {/* Floating leaf decorations */}
       <div className="absolute top-32 right-8 lg:right-16 opacity-20 float-leaf pointer-events-none" aria-hidden="true">
         <svg width="60" height="90" viewBox="0 0 60 90" fill="none">
-          <path d="M30 2C30 2 58 20 58 50C58 72 46 86 30 88C14 86 2 72 2 50C2 20 30 2 30 2Z" fill="#2D5016" />
-          <path d="M30 88V20" stroke="#6B8F47" strokeWidth="1.5" strokeLinecap="round" />
+          <path d="M30 2C30 2 58 20 58 50C58 72 46 86 30 88C14 86 2 72 2 50C2 20 30 2 30 2Z" fill="#099C4E" />
+          <path d="M30 88V20" stroke="#88C541" strokeWidth="1.5" strokeLinecap="round" />
         </svg>
       </div>
       <div className="absolute bottom-24 left-8 lg:left-16 opacity-15 float-leaf-slow pointer-events-none" aria-hidden="true">
         <svg width="40" height="60" viewBox="0 0 40 60" fill="none">
-          <path d="M20 2C20 2 38 14 38 34C38 48 30 58 20 59C10 58 2 48 2 34C2 14 20 2 20 2Z" fill="#6B8F47" />
-          <path d="M20 59V14" stroke="#2D5016" strokeWidth="1" strokeLinecap="round" />
+          <path d="M20 2C20 2 38 14 38 34C38 48 30 58 20 59C10 58 2 48 2 34C2 14 20 2 20 2Z" fill="#88C541" />
+          <path d="M20 59V14" stroke="#099C4E" strokeWidth="1" strokeLinecap="round" />
         </svg>
       </div>
       <div className="absolute top-1/2 right-4 lg:right-32 opacity-10 float-leaf pointer-events-none" style={{ animationDelay: '4s' }} aria-hidden="true">

@@ -5,10 +5,10 @@
 :root {
   --background: #FAF8F3;
   --foreground: #1C2B0E;
-  --primary: #2D5016;
+  --primary: #099C4E;
   --primary-foreground: #FAF8F3;
-  --secondary: #6B8F47;
-  --secondary-foreground: #FAF8F3;
+  --secondary: #88C541;
+  --secondary-foreground: #099C4E;
   --accent: #8B6914;
   --accent-foreground: #FAF8F3;
   --muted: #EDE8DC;
@@ -17,7 +17,7 @@
   --card-foreground: #1C2B0E;
   --border: #D8D0BE;
   --input: #EDE8DC;
-  --ring: #2D5016;
+  --ring: #099C4E;
   --radius: 0.75rem;
   --font-sans: var(--font-dm-sans), sans-serif;
   --font-serif: var(--font-fraunces), serif;
@@ -73,8 +73,8 @@
   }
 
   .leaf-bg {
-    background-image: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(45, 80, 22, 0.08) 0%, transparent 70%),
-      radial-gradient(ellipse 50% 40% at 20% 80%, rgba(107, 143, 71, 0.06) 0%, transparent 60%);
+    background-image: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(9, 156, 78,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 20% 80%, rgba(136, 197, 65, 0.06) 0%, transparent 60%);
   }
 
   .card-hover {
@@ -83,7 +83,7 @@
 
   .card-hover:hover {
     transform: translateY(-4px);
-    box-shadow: 0 20px 40px -12px rgba(45, 80, 22, 0.15);
+    box-shadow: 0 20px 40px -12px rgba(9, 156, 78,0.15);
   }
 
   .whatsapp-btn {
@@ -132,7 +132,7 @@
     padding: 1px;
     background: radial-gradient(
       600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-      rgba(45, 80, 22, 0.25),
+      rgba(9, 156, 78,0.25),
       transparent 40%
     );
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -158,7 +158,7 @@
 
   .pillar-card:hover {
     border-color: var(--secondary);
-    box-shadow: 0 8px 24px -8px rgba(45, 80, 22, 0.12);
+    box-shadow: 0 8px 24px -8px rgba(9, 156, 78,0.12);
     transform: translateY(-2px);
   }
 
@@ -171,8 +171,8 @@
   }
 
   .product-card:hover {
-    border-color: rgba(45, 80, 22, 0.3);
-    box-shadow: 0 16px 40px -12px rgba(45, 80, 22, 0.14);
+    border-color: rgba(9, 156, 78,0.3);
+    box-shadow: 0 16px 40px -12px rgba(9, 156, 78,0.14);
     transform: translateY(-3px);
   }
 
