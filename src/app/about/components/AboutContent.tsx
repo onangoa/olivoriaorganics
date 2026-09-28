@@ -158,8 +158,8 @@ export default function AboutContent() {
             <div className="scroll-reveal scroll-reveal-delay-1">
               <div className="relative rounded-3xl overflow-hidden shadow-xl" style={{ aspectRatio: '3/4' }}>
                 <AppImage
-                  src="https://img.rocket.new/generatedImages/rocket_gen_img_14a32fed0-1772261238759.png"
-                  alt="Professional wellness practitioner smiling warmly in a natural, bright consultation space surrounded by plants and natural light"
+                  src="/assets/images/no_image.png"
+                  alt="Olivoria Organics founder and wellness practitioner"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw" />
