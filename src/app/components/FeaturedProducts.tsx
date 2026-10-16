@@ -76,7 +76,7 @@ export default function FeaturedProducts({ products }: FeaturedProductsProps) {
                 src={product.image}
                 alt={product.alt}
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                className="object-contain transition-transform duration-500 group-hover:scale-105"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
               
                 {/* Category badge */}

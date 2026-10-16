@@ -4,6 +4,19 @@ import React, { useEffect, useState } from 'react';
 
 const WHATSAPP_NUMBER = '254708261674';
 
+const CARE_TYPES = ['Disease Management Support', 'Palliative Care Support'];
+
+const CARE_SUBCATEGORIES = [
+  'Diabetes',
+  'High blood pressure',
+  'Prostate related',
+  'Joint care related (Arthritis and Gout)',
+  'Cancer related',
+  'Autoimmune related',
+  'Digestive system related',
+  'Others',
+];
+
 interface ConsultationFormModalProps {
   open: boolean;
   onClose: () => void;
@@ -15,6 +28,8 @@ export default function ConsultationFormModal({ open, onClose }: ConsultationFor
     name: '',
     contact: '',
     type: 'General Wellness Consultation',
+    subcategory: '',
+    otherSubcategory: '',
     format: 'In-person',
     notes: '',
   });
@@ -40,7 +55,17 @@ export default function ConsultationFormModal({ open, onClose }: ConsultationFor
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData((prev) => {
+      const next = { ...prev, [name]: value } as typeof prev;
+      if (name === 'type' && !CARE_TYPES.includes(value)) {
+        next.subcategory = '';
+        next.otherSubcategory = '';
+      }
+      if (name === 'subcategory' && value !== 'Others') {
+        next.otherSubcategory = '';
+      }
+      return next;
+    });
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -48,6 +73,10 @@ export default function ConsultationFormModal({ open, onClose }: ConsultationFor
     // Submission handling is not implemented yet — record the request locally.
     setSubmitted(true);
   };
+
+  const showSubcategory = CARE_TYPES.includes(formData.type);
+  const showOtherSubcategory = showSubcategory && formData.subcategory === 'Others';
+  const subcategoryLabel = showSubcategory ? `${formData.type.replace(' Support', '')} Type` : '';
 
   if (!open) return null;
 
@@ -141,6 +170,47 @@ export default function ConsultationFormModal({ open, onClose }: ConsultationFor
                   <option value="Palliative Care Support">Palliative Care Support</option>
                 </select>
               </div>
+              {showSubcategory && (
+                <div>
+                  <label htmlFor="consult-subcategory" className="block text-sm font-medium text-foreground mb-1.5">
+                    {subcategoryLabel} *
+                  </label>
+                  <select
+                    id="consult-subcategory"
+                    name="subcategory"
+                    required
+                    value={formData.subcategory}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all"
+                  >
+                    <option value="" disabled>
+                      Select a type
+                    </option>
+                    {CARE_SUBCATEGORIES.map((sub) => (
+                      <option key={sub} value={sub}>
+                        {sub}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
+              {showOtherSubcategory && (
+                <div>
+                  <label htmlFor="consult-other-subcategory" className="block text-sm font-medium text-foreground mb-1.5">
+                    Please Specify *
+                  </label>
+                  <input
+                    id="consult-other-subcategory"
+                    name="otherSubcategory"
+                    type="text"
+                    required
+                    value={formData.otherSubcategory}
+                    onChange={handleChange}
+                    placeholder="Tell us what you'd like support with"
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all"
+                  />
+                </div>
+              )}
               <div>
                 <label htmlFor="consult-format" className="block text-sm font-medium text-foreground mb-1.5">Preferred Format</label>
                 <select

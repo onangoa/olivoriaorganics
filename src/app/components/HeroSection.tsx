@@ -129,7 +129,7 @@ export default function HeroSection() {
               {/* Main image card */}
               <div className="relative rounded-3xl overflow-hidden shadow-2xl" style={{ aspectRatio: '4/5' }}>
                 <AppImage
-                  src="https://img.rocket.new/generatedImages/rocket_gen_img_1eaa4f265-1767472223512.png"
+                  src="/assets/images/olivoria.jpeg"
                   alt="Fresh organic herbs and natural wellness products arranged on a warm wooden surface with soft natural lighting"
                   fill
                   className="object-cover"

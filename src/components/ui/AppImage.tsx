@@ -46,6 +46,7 @@ const AppImage = memo(function AppImage({
 
     const isExternalUrl = useMemo(() => typeof imageSrc === 'string' && imageSrc.startsWith('http'), [imageSrc]);
     const resolvedUnoptimized = unoptimized || isExternalUrl;
+    const hasObjectFitClass = /(^|\s)object-(contain|cover|fill|none|scale-down)(\s|$)/.test(className);
 
     const handleError = useCallback(() => {
         if (!hasError && imageSrc !== fallbackSrc) {
@@ -100,7 +101,7 @@ const AppImage = memo(function AppImage({
                     {...imageProps}
                     fill
                     sizes={sizes || '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'}
-                    style={{ objectFit: 'cover' }}
+                    style={hasObjectFitClass ? undefined : { objectFit: 'cover' }}
                     {...props}
                 />
             </div>

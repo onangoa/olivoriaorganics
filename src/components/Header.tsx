@@ -10,7 +10,7 @@ const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'Products', href: '/products' },
   { label: 'Consultations', href: '/consultations' },
-  { label: 'Health Reform', href: '/health-reform' },
+  // { label: 'Health Reform', href: '/health-reform' },
   { label: 'Blog', href: '/blog' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },

@@ -13,39 +13,7 @@
     "Keep entries grouped by category. After editing, run 'npm run build' to publish."
   ],
   "products": [
-    {
-      "id": "organic-hemp-seeds",
-      "name": "Organic Hemp Seeds",
-      "category": "Seeds & Nuts",
-      "description": "Hulled organic hemp seeds. A complete plant protein source. Excellent added to smoothies, salads, and cereals.",
-      "price": "KSh 1,250",
-      "availability": "In Stock",
-      "featured": false,
-      "image": "https://img.rocket.new/generatedImages/rocket_gen_img_1e74044d8-1772057607386.png",
-      "alt": "Small bowl of organic hemp seeds on natural linen cloth with green plants in background"
-    },
-    {
-      "id": "organic-flaxseeds",
-      "name": "Organic Golden Flaxseeds",
-      "category": "Seeds & Nuts",
-      "description": "Whole organic golden flaxseeds. Rich in omega-3 fatty acids and dietary fibre. A wholesome addition to any diet.",
-      "price": "KSh 700",
-      "availability": "In Stock",
-      "featured": false,
-      "image": "https://images.unsplash.com/photo-1707627600174-10ca22151058",
-      "alt": "Golden flaxseeds in a small wooden bowl on a light background with natural texture"
-    },
-    {
-      "id": "organic-mixed-nuts",
-      "name": "Organic Mixed Nuts",
-      "category": "Seeds & Nuts",
-      "description": "A wholesome blend of raw walnuts, pecans, almonds, and pistachios. Naturally rich in healthy fats, plant protein, and minerals.",
-      "price": "KSh 1,400",
-      "availability": "In Stock",
-      "featured": false,
-      "image": "https://images.unsplash.com/photo-1543158181-1274e5362710",
-      "alt": "Mix of organic walnuts, pecans, almonds, and pistachios arranged in a wooden bowl"
-    },
+    
     {
       "id": "organic-almonds",
       "name": "Organic Almonds",
@@ -157,31 +125,10 @@
       "price": "KSh 1,500",
       "availability": "In Stock",
       "featured": true,
-      "image": "https://img.rocket.new/generatedImages/rocket_gen_img_154257613-1772368886880.png",
+      "image": "/assets/no_image.png",
       "alt": "Glass jar of coconut oil with fresh coconut on a white surface in bright natural light"
     },
-    {
-      "id": "black-seed-oil",
-      "name": "Organic Black Seed Oil",
-      "category": "Cold-Pressed Oils & Essential Oils",
-      "description": "Cold-pressed Nigella sativa oil. Traditionally used across cultures for centuries as part of a healthy lifestyle.",
-      "price": "KSh 1,750",
-      "availability": "In Stock",
-      "featured": false,
-      "image": "https://img.rocket.new/generatedImages/rocket_gen_img_1f37ce186-1784524443233.png",
-      "alt": "Dark amber bottle of black seed oil with seeds scattered on a natural wooden surface"
-    },
-    {
-      "id": "lavender-essential-oil",
-      "name": "Organic Lavender Essential Oil",
-      "category": "Cold-Pressed Oils & Essential Oils",
-      "description": "Pure organic lavender essential oil. Traditionally used to support relaxation and a calming atmosphere.",
-      "price": "KSh 1,150",
-      "availability": "In Stock",
-      "featured": false,
-      "image": "https://img.rocket.new/generatedImages/rocket_gen_img_1eb19e721-1786266981685.png",
-      "alt": "Small amber bottle of lavender essential oil surrounded by fresh purple lavender flowers"
-    },
+    
     {
       "id": "eucalyptus-essential-oil",
       "name": "Eucalyptus Essential Oil",
@@ -189,8 +136,8 @@
       "description": "Steam-distilled from Eucalyptus globulus leaves — a distinct, invigorating aroma traditionally used to support clear breathing, relaxation, and everyday wellbeing.",
       "price": "KSh 1,000",
       "availability": "In Stock",
-      "featured": false,
-      "image": "/assets/no_image.png",
+      "featured": true,
+      "image": "/assets/images/products/peppermint-essential-oil.png",
       "alt": "Bottle of eucalyptus essential oil with fresh eucalyptus leaves on a natural surface",
       "longDescription": "Eucalyptus essential oil is derived from the leaves of the Eucalyptus globulus tree through a steam distillation process. Its concentration and richness give it a distinct aroma suitable for many uses — from aromatherapy and decongestion to traditional wellness and personal care. Altogether, its warming topical comfort, respiratory support, and natural insect-repelling benefit make it a versatile and valuable natural remedy for daily wellbeing.",
       "nutrition": [
@@ -220,7 +167,7 @@
       "description": "Steam-distilled from Mentha × piperita leaves and flowering tops — high menthol content gives an intense cooling sensation and wide versatility for everyday wellness.",
       "price": "KSh 1,100",
       "availability": "In Stock",
-      "featured": false,
+      "featured": true,
       "image": "/assets/images/products/peppermint-essential-oil.png",
       "alt": "Bottle of peppermint essential oil with fresh peppermint leaves on a natural surface",
       "longDescription": "Peppermint essential oil is derived from the leaves and flowering tops of Mentha × piperita through a steam distillation process. It is known for its high menthol content, which gives it both its intense cooling sensation and its wide versatility.",
@@ -251,7 +198,7 @@
       "price": "KSh 950",
       "availability": "In Stock",
       "featured": false,
-      "image": "/assets/no_image.png",
+      "image": "/assets/images/products/peppermint-essential-oil.png",
       "alt": "Bottle of lemongrass essential oil with fresh lemongrass stalks on a natural surface",
       "longDescription": "Lemongrass essential oil is derived from the leaves and stalks of Cymbopogon citratus through a steam distillation method of extraction. It has a powerful citrus scent, recommended for aromatherapy that may help relieve stress and anxiety, and it is also traditionally used for digestive comfort. From its therapeutic properties to its applications in beauty and household cleaning, it offers a natural, effective solution for many everyday needs.",
       "nutrition": [
@@ -280,7 +227,7 @@
       "price": "KSh 1,250",
       "availability": "In Stock",
       "featured": false,
-      "image": "/assets/no_image.png",
+      "image": "/assets/images/products/peppermint-essential-oil.png",
       "alt": "Bottle of oregano essential oil with fresh oregano leaves on a natural surface",
       "longDescription": "Oregano essential oil is derived from the leaves of Origanum vulgare through a steam distillation process. It is one of the most powerful and versatile antioxidant essential oils — traditionally used to stimulate the immune and digestive systems and strengthen the body's natural energy. From its antimicrobial and antifungal strength to skin, hair, and immune support, it offers a spectrum of wellness benefits.",
       "nutrition": [
@@ -300,138 +247,7 @@
         "Topically — mix with a carrier oil for skin applications.",
         "Aromatherapy — inhale for respiratory relief."
       ]
-    },
-    {
-      "id": "organic-medjool-dates",
-      "name": "Organic Medjool Dates",
-      "category": "Dried Fruits",
-      "description": "Naturally sweet, sun-ripened Medjool dates. A wholesome source of dietary fibre and natural energy for the whole family.",
-      "price": "KSh 900",
-      "availability": "In Stock",
-      "featured": true,
-      "image": "https://images.unsplash.com/photo-1774857247287-d68599847107",
-      "alt": "Pile of naturally sweet organic dried Medjool dates on a rustic natural surface"
-    },
-    {
-      "id": "organic-dried-fruit-mix",
-      "name": "Organic Dried Fruit Mix",
-      "category": "Dried Fruits",
-      "description": "Assorted sun-dried fruit slices with nothing added — no refined sugar, no preservatives. A naturally sweet, wholesome snack.",
-      "price": "KSh 1,000",
-      "availability": "In Stock",
-      "featured": false,
-      "image": "https://images.unsplash.com/photo-1536700626482-f7d798222061",
-      "alt": "Assorted organic dried fruit slices arranged beautifully on a rustic wooden surface"
-    },
-    {
-      "id": "organic-turmeric-blend",
-      "name": "Organic Turmeric Blend",
-      "category": "Kitchen Spices",
-      "description": "Whole-food turmeric with black pepper for enhanced absorption. Traditionally used for general wellness support.",
-      "price": "KSh 1,100",
-      "availability": "In Stock",
-      "featured": true,
-      "image": "https://img.rocket.new/generatedImages/rocket_gen_img_12d768334-1766740607394.png",
-      "alt": "Vibrant yellow turmeric powder and fresh turmeric root on a wooden surface"
-    },
-    {
-      "id": "organic-cinnamon-sticks",
-      "name": "Organic Cinnamon Sticks",
-      "category": "Kitchen Spices",
-      "description": "Aromatic Ceylon cinnamon sticks, sun-dried and hand-rolled. Traditionally used to add warm, gentle flavour to teas, porridges, and bakes.",
-      "price": "KSh 750",
-      "availability": "In Stock",
-      "featured": false,
-      "image": "https://images.unsplash.com/photo-1756363665372-9110664daaa6",
-      "alt": "Close-up of aromatic organic dried cinnamon sticks piled together"
-    },
-    {
-      "id": "organic-chamomile-flowers",
-      "name": "Organic Chamomile Flowers",
-      "category": "Botanical Herbs",
-      "description": "Sun-dried whole chamomile blossoms. Traditionally used to support relaxation and restful evenings.",
-      "price": "KSh 850",
-      "availability": "In Stock",
-      "featured": false,
-      "image": "https://images.unsplash.com/photo-1783410086695-b99d97f2fcd5",
-      "alt": "Delicate organic chamomile flowers with yellow centers against a soft natural backdrop"
-    },
-    {
-      "id": "dried-hibiscus-flowers",
-      "name": "Dried Hibiscus Flowers",
-      "category": "Botanical Herbs",
-      "description": "Naturally tart, ruby-red hibiscus blossoms for refreshing hot or iced infusions. Traditionally used to support general wellness.",
-      "price": "KSh 800",
-      "availability": "In Stock",
-      "featured": false,
-      "image": "https://images.unsplash.com/photo-1765118527329-6ed7fa0d10ac",
-      "alt": "Ruby-red hibiscus infusion in a glass mug with cinnamon sticks and dried fruit"
-    },
-    {
-      "id": "organic-moringa-powder",
-      "name": "Organic Moringa Powder",
-      "category": "Plant & Herbal Extracts",
-      "description": "Traditionally used to support energy and nutritional wellbeing. Rich in vitamins, minerals, and antioxidants. May support general vitality as part of a healthy lifestyle.",
-      "price": "KSh 1,350",
-      "availability": "In Stock",
-      "featured": true,
-      "image": "https://img.rocket.new/generatedImages/rocket_gen_img_1c760dfda-1784615633062.png",
-      "alt": "Green moringa powder in a wooden bowl with fresh moringa leaves on a cream background"
-    },
-    {
-      "id": "spirulina-powder",
-      "name": "Organic Spirulina Powder",
-      "category": "Plant & Herbal Extracts",
-      "description": "Nutrient-dense blue-green algae powder. Traditionally used to support general nutritional wellbeing.",
-      "price": "KSh 1,450",
-      "availability": "In Stock",
-      "featured": false,
-      "image": "https://img.rocket.new/generatedImages/rocket_gen_img_1f9a1b3ea-1772131894338.png",
-      "alt": "Vibrant green spirulina powder in a wooden spoon surrounded by fresh green plants"
-    },
-    {
-      "id": "aloe-vera-gel",
-      "name": "Pure Aloe Vera Gel",
-      "category": "Plant & Herbal Extracts",
-      "description": "Certified organic aloe vera gel. Traditionally used to support skin health and soothing topical care.",
-      "price": "KSh 950",
-      "availability": "In Stock",
-      "featured": true,
-      "image": "https://img.rocket.new/generatedImages/rocket_gen_img_197ec325b-1772072820733.png",
-      "alt": "Fresh aloe vera plant with clear gel on bright white background in natural setting"
-    },
-    {
-      "id": "rooibos-wellness-tea",
-      "name": "Rooibos Wellness Tea",
-      "category": "Tailored Herbal Teas & Extracts",
-      "description": "South African rooibos blended with chamomile and lavender. Traditionally used to support relaxation. May support restful sleep as part of a healthy routine.",
-      "price": "KSh 850",
-      "availability": "In Stock",
-      "featured": true,
-      "image": "https://img.rocket.new/generatedImages/rocket_gen_img_1ead2fd92-1780244500039.png",
-      "alt": "Warm cup of rooibos tea with dried flowers on a wooden tray in soft natural light"
-    },
-    {
-      "id": "organic-ginger-tea",
-      "name": "Organic Ginger & Lemon Tea",
-      "category": "Tailored Herbal Teas & Extracts",
-      "description": "Warming blend of organic ginger root and lemon peel. Traditionally used to support digestive comfort and warmth.",
-      "price": "KSh 800",
-      "availability": "In Stock",
-      "featured": false,
-      "image": "https://images.unsplash.com/photo-1682530016814-6a1c1311cd6e",
-      "alt": "Fresh ginger slices and lemon in hot water in a clear glass cup on wooden surface"
-    },
-    {
-      "id": "tailored-chamomile-calm-tea",
-      "name": "Tailored Chamomile Calm Tea",
-      "category": "Tailored Herbal Teas & Extracts",
-      "description": "A calming blend of chamomile and gentle complementary botanicals, tailored to your preference. Traditionally used to support relaxation and restful sleep.",
-      "price": "KSh 950",
-      "availability": "In Stock",
-      "featured": false,
-      "image": "https://images.unsplash.com/photo-1749105862005-6e0409c8c55a",
-      "alt": "Calming cup of chamomile tea with floating blossoms in a dark ceramic cup on a marble table"
     }
+    
   ]
 }

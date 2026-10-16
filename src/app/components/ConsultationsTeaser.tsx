@@ -88,7 +88,7 @@ export default function ConsultationsTeaser() {
           <div className="scroll-reveal scroll-reveal-delay-2">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl" style={{ aspectRatio: '4/3' }}>
               <AppImage
-                src="https://img.rocket.new/generatedImages/rocket_gen_img_1b186d424-1772295342532.png"
+                src="/assets/images/1b186d424-1772295342532.jpg"
                 alt="Wellness consultation setting with natural herbs, fresh vegetables, and health materials on a clean wooden table in warm natural light"
                 fill
                 className="object-cover"

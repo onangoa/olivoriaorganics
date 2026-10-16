@@ -145,7 +145,7 @@ export default function ConsultationsContent() {
             <div className="scroll-reveal scroll-reveal-delay-1">
               <div className="relative rounded-3xl overflow-hidden shadow-xl" style={{ aspectRatio: '4/3' }}>
                 <AppImage
-                  src="https://img.rocket.new/generatedImages/rocket_gen_img_1031beb16-1772146032935.png"
+                  src="/assets/images/1b186d424-1772295342532.jpg"
                   alt="Warm wellness consultation setting with natural herbs, fresh produce, and health materials on a wooden table in bright natural light"
                   fill
                   className="object-cover"

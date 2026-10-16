@@ -32,8 +32,8 @@ export default function IntroSection() {
           <div className="scroll-reveal relative">
             <div className="relative rounded-3xl overflow-hidden shadow-xl" style={{ aspectRatio: '3/4' }}>
               <AppImage
-                src="https://images.unsplash.com/photo-1594089195017-27d5eddb2461"
-                alt="Organic vegetables and natural health products displayed on a bright natural surface in warm afternoon light"
+                src="/assets/images/olivoria_stack.jpeg"
+                alt="Wholistic organic wellness products"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw" />

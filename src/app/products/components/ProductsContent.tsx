@@ -123,7 +123,7 @@ export default function ProductsContent({ products }: ProductsContentProps) {
                 src={product.image}
                 alt={product.alt}
                 fill
-                className="object-cover transition-transform duration-500"
+                className="object-contain transition-transform duration-500"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" />
               
                   {product.featured &&

@@ -95,7 +95,7 @@ export default function ProductDetailContent({ product, relatedProducts }: Produ
             src={product.image}
             alt={product.alt}
             fill
-            className="object-cover"
+            className="object-contain"
             sizes="(max-width: 768px) 100vw, 768px" />
         </div>
 
@@ -168,7 +168,7 @@ export default function ProductDetailContent({ product, relatedProducts }: Produ
 
         {/* Disclaimer */}
         <p className="mt-10 text-xs text-muted-foreground leading-relaxed scroll-reveal">
-          This information is for educational purposes only and is not intended to diagnose, treat, cure, or prevent any disease. Essential oils must be used with care and properly diluted. Always consult a qualified healthcare professional before use, especially if pregnant, nursing, on medication, or managing a health condition.
+          Essential oils must be used with care. Always consult a qualified healthcare professional before use, especially if pregnant, nursing, on medication, or managing a health condition.
         </p>
       </article>
 
@@ -191,7 +191,7 @@ export default function ProductDetailContent({ product, relatedProducts }: Produ
                   src={related.image}
                   alt={related.alt}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-contain transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
               </div>
               <div className="p-5 flex flex-col gap-2.5">

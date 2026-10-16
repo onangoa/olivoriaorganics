@@ -45,7 +45,7 @@ export default function AboutContent() {
             <div className="scroll-reveal">
               <div className="relative rounded-3xl overflow-hidden shadow-xl" style={{ aspectRatio: '4/3' }}>
                 <AppImage
-                  src="https://img.rocket.new/generatedImages/rocket_gen_img_18edcdae1-1766563254553.png"
+                  src="/assets/images/edcdae1-1766563254553.jpg"
                   alt="Lush organic garden with vibrant green plants and natural sunlight filtering through leaves in a serene outdoor setting"
                   fill
                   className="object-cover"
@@ -144,7 +144,7 @@ export default function AboutContent() {
               <div className="space-y-4 text-muted-foreground leading-relaxed scroll-reveal scroll-reveal-delay-2">
                 <p>With a background in health education and a passion for natural living, our founder established Olivoria Organics out of a desire to make wholistic wellness accessible and practical for everyday families.</p>
                 <p>Having personally experienced the transformation that comes from embracing natural, whole-food nutrition and a principled lifestyle, she wanted to create a space where others could access quality organic products alongside the guidance to use them effectively.</p>
-                <p>Her approach is warm, non-judgmental, and deeply rooted in the belief that every person has the potential to experience greater health and vitality — regardless of where they are starting from.</p>
+                <p>His approach is warm, non-judgmental, and deeply rooted in the belief that every person has the potential to experience greater health and vitality — regardless of where they are starting from.</p>
               </div>
               <div className="grid grid-cols-2 gap-4 scroll-reveal scroll-reveal-delay-3">
                 {['Health Education', 'Wholistic Wellness', 'Nutrition Guidance', 'Lifestyle Coaching']?.map((qual) =>
