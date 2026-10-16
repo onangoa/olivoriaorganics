@@ -2,8 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import AppImage from '@/components/ui/AppImage';
-
-const WHATSAPP_NUMBER = '254708261674';
+import ConsultationFormModal from '@/components/ConsultationFormModal';
 
 const faqs = [
 {
@@ -15,8 +14,16 @@ const faqs = [
   a: 'No. Our consultations are educational and wellness-focused. They do not constitute medical diagnosis, treatment, or prescription. We always encourage you to work alongside qualified healthcare professionals for any medical concerns.'
 },
 {
+  q: 'What is disease management support?',
+  a: 'Disease management support is educational, lifestyle-centred guidance for people living with chronic conditions such as type 2 diabetes, high blood pressure, or arthritis. We help you build supportive daily habits around nutrition, movement, rest, and stress — always working alongside your doctor or healthcare team, never in place of them.'
+},
+{
+  q: 'What does palliative care support involve?',
+  a: 'Our palliative care support focuses on comfort, dignity, and quality of life for individuals and families navigating serious illness. We offer gentle, wholistic guidance — nourishing foods, restful routines, calming environments, and emotional and spiritual encouragement — as a complement to the medical care you receive from your healthcare providers.'
+},
+{
   q: 'Who can benefit from a consultation?',
-  a: 'Anyone who wants to make meaningful improvements to their lifestyle and wellbeing. Whether you are just beginning your wellness journey, looking to refine your nutrition, or seeking guidance on health reform principles — we can help.'
+  a: 'Anyone who wants to make meaningful improvements to their lifestyle and wellbeing. Whether you are just beginning your wellness journey, looking to refine your nutrition, living with a chronic condition, or seeking guidance on health reform principles — we can help.'
 },
 {
   q: 'How do I book a consultation?',
@@ -38,21 +45,15 @@ const areas = [
 { icon: '😴', title: 'Rest & Recovery', desc: 'Guidance on improving sleep quality and incorporating restorative rest.' },
 { icon: '💧', title: 'Hydration & Detox', desc: 'Understanding the role of water and natural cleansing approaches.' },
 { icon: '🌿', title: 'Health Reform Principles', desc: 'Introduction to the eight foundational principles of wholistic health.' },
-{ icon: '👨‍👩‍👧', title: 'Family Wellness', desc: 'Whole-family approaches to healthier living, including children\'s nutrition.' }];
+{ icon: '👨‍👩‍👧', title: 'Family Wellness', desc: 'Whole-family approaches to healthier living, including children\'s nutrition.' },
+{ icon: '🩺', title: 'Disease Management Support', desc: 'Wholistic lifestyle guidance for those living with chronic conditions — always alongside your medical team.' },
+{ icon: '🕊️', title: 'Palliative Care Support', desc: 'Compassionate, comfort-focused guidance for individuals and families navigating serious illness.' }];
 
 
 export default function ConsultationsContent() {
   const ref = useRef<HTMLDivElement>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [formOpen, setFormOpen] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    contact: '',
-    type: 'General Wellness Consultation',
-    format: 'In-person',
-    notes: '',
-  });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -69,41 +70,15 @@ export default function ConsultationsContent() {
     return () => observer.disconnect();
   }, []);
 
+  // Auto-open the booking form when arriving via a "Book Consultation" link
+  // (e.g. /consultations?book=1).
   useEffect(() => {
-    if (!formOpen) return;
-    document.body.style.overflow = 'hidden';
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setFormOpen(false);
-    };
-    window.addEventListener('keydown', onKey);
-    return () => {
-      document.body.style.overflow = '';
-      window.removeEventListener('keydown', onKey);
-    };
-  }, [formOpen]);
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('book') === '1') setFormOpen(true);
+  }, []);
 
-  const handleWhatsApp = () => {
-    const message = encodeURIComponent('Hello, I would like to request a health and wellness consultation with OlivoriaOrganics. Could you please provide more information?');
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
-  };
-
-  const openForm = () => {
-    setSubmitted(false);
-    setFormOpen(true);
-  };
-
+  const openForm = () => setFormOpen(true);
   const closeForm = () => setFormOpen(false);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // Submission handling is not implemented yet — record the request locally.
-    setSubmitted(true);
-  };
 
   const toggleFaq = (index: number) => {
     setOpenFaq((prev) => prev === index ? null : index);
@@ -125,7 +100,7 @@ export default function ConsultationsContent() {
             Health & Wellness<br />Consultations
           </h1>
           <p className="text-primary-foreground/80 mt-4 max-w-xl mx-auto leading-relaxed scroll-reveal scroll-reveal-delay-2">
-            Individualized guidance for healthy lifestyle choices, nutrition, wellness, and health reform — rooted in wholistic principles and genuine care.
+            Individualized guidance for healthy lifestyle choices, nutrition, wellness, and health reform — including disease management and palliative care support — rooted in wholistic principles and genuine care.
           </p>
           <div className="mt-8 scroll-reveal scroll-reveal-delay-3">
             <button
@@ -189,7 +164,7 @@ export default function ConsultationsContent() {
               Topics We Can <span className="text-primary">Explore Together</span>
             </h2>
           </div>
-          {/* BENTO: 6 cards, 3 cols desktop, 2 tablet, 1 mobile — 6/6 ✓ */}
+          {/* BENTO: 8 cards, 3 cols desktop, 2 tablet, 1 mobile */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {areas.map((area, i) =>
             <div key={area.title} className={`bg-card border border-border rounded-2xl p-6 card-hover scroll-reveal scroll-reveal-delay-${Math.min(i + 1, 6)}`}>
@@ -198,6 +173,67 @@ export default function ConsultationsContent() {
                 <p className="text-sm text-muted-foreground leading-relaxed">{area.desc}</p>
               </div>
             )}
+          </div>
+        </section>
+
+        {/* Disease Management & Palliative Care */}
+        <section className="py-16 border-b border-border">
+          <div className="text-center mb-12">
+            <div className="scroll-reveal mb-4 flex justify-center"><span className="section-label">Compassionate Support</span></div>
+            <h2 className="text-headline font-serif font-light italic text-foreground scroll-reveal scroll-reveal-delay-1">
+              Disease Management & <span className="text-primary">Palliative Care Support</span>
+            </h2>
+            <p className="text-muted-foreground mt-4 max-w-2xl mx-auto leading-relaxed scroll-reveal scroll-reveal-delay-2">
+              Living with a chronic or serious illness affects the whole person — and the whole family. Our wholistic support walks alongside your medical care, focusing on daily habits, comfort, and quality of life.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-6">
+            <div className="bg-card border border-border rounded-2xl p-8 card-hover scroll-reveal">
+              <div className="text-4xl mb-4">🩺</div>
+              <h3 className="font-serif text-xl font-semibold text-foreground mb-3">Disease Management Support</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+                If you are living with a chronic condition such as type 2 diabetes, high blood pressure, or arthritis, small daily choices can make a meaningful difference. We help you build a supportive lifestyle around your doctor's treatment plan — never in place of it.
+              </p>
+              <div className="space-y-2.5">
+                {['Nutrition guidance tailored to your condition', 'Gentle, appropriate movement and activity ideas', 'Rest, sleep, and stress-reduction strategies', 'Practical habit-setting with follow-up support', 'Coordination-friendly notes you can share with your doctor'].map((item) =>
+                <div key={item} className="flex items-center gap-3 text-sm text-foreground">
+                    <span className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-primary" aria-hidden="true">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                    </span>
+                    {item}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="bg-card border border-border rounded-2xl p-8 card-hover scroll-reveal scroll-reveal-delay-1">
+              <div className="text-4xl mb-4">🕊️</div>
+              <h3 className="font-serif text-xl font-semibold text-foreground mb-3">Palliative Care Support</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+                For individuals and families navigating serious illness, our focus shifts to comfort, dignity, and peace. We provide a calm, compassionate presence and gentle wholistic guidance that complements the care you receive from your medical team.
+              </p>
+              <div className="space-y-2.5">
+                {['Comfort-centred nutrition and gentle nourishment', 'Calming routines and restful environments', 'Emotional and spiritual encouragement', 'Respite and self-care guidance for caregivers', 'Whole-family support through difficult seasons'].map((item) =>
+                <div key={item} className="flex items-center gap-3 text-sm text-foreground">
+                    <span className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-primary" aria-hidden="true">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                    </span>
+                    {item}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-6 p-5 bg-muted/50 rounded-xl border border-border scroll-reveal">
+            <p className="text-xs text-muted-foreground text-center leading-relaxed">
+              <strong className="text-foreground">Important:</strong> Disease management and palliative care support at Olivoria Organics is educational and wholistic in nature. It does not include medical diagnosis, treatment, prescription, or medication management. Please always follow the guidance of your qualified healthcare professionals. If you are experiencing a medical emergency, contact your doctor or emergency services immediately.
+            </p>
           </div>
         </section>
 
@@ -224,7 +260,7 @@ export default function ConsultationsContent() {
                 </div>
                 <div className="mt-8 pt-6 border-t border-border">
                   <p className="text-xs text-muted-foreground leading-relaxed">
-                    <strong className="text-foreground">Disclaimer:</strong> OlivoriaOrganics wellness consultations are educational in nature and do not constitute medical diagnosis, treatment, or prescription. Always consult a qualified healthcare professional for medical concerns.
+                    <strong className="text-foreground">Disclaimer:</strong> Olivoria Organics wellness consultations are educational in nature and do not constitute medical diagnosis.
                   </p>
                 </div>
               </div>
@@ -266,144 +302,7 @@ export default function ConsultationsContent() {
       </div>
 
       {/* Consultation Booking Form Modal */}
-      {formOpen && (
-        <div
-          className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Book a consultation"
-          onClick={(e) => {
-            if (e.target === e.currentTarget) closeForm();
-          }}
-        >
-          <div className="bg-card border border-border rounded-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto p-7 shadow-xl">
-            {submitted ? (
-              <div className="text-center py-10">
-                <div className="text-5xl mb-4">🌿</div>
-                <h3 className="font-serif text-xl font-semibold text-foreground mb-2">Request Received!</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                  Thank you{formData.name ? `, ${formData.name}` : ''} — your consultation request has been recorded.
-                  We'll be in touch to confirm your appointment.
-                </p>
-                <button onClick={closeForm} className="px-7 py-3 rounded-full bg-primary text-primary-foreground font-semibold text-sm shadow-md transition-all duration-200 hover:-translate-y-0.5">
-                  Done
-                </button>
-              </div>
-            ) : (
-              <>
-                <div className="flex items-start justify-between mb-6">
-                  <div>
-                    <h3 className="font-serif text-xl font-semibold text-foreground">Book a Consultation</h3>
-                    <p className="text-muted-foreground text-sm mt-1">
-                      Fill in the form below and we'll get back to you to confirm a time.
-                    </p>
-                  </div>
-                  <button
-                    onClick={closeForm}
-                    className="p-2 -mr-2 -mt-1 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
-                    aria-label="Close form"
-                  >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <path d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </button>
-                </div>
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div>
-                    <label htmlFor="consult-name" className="block text-sm font-medium text-foreground mb-1.5">Full Name *</label>
-                    <input
-                      id="consult-name"
-                      name="name"
-                      type="text"
-                      required
-                      autoFocus
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder="Your full name"
-                      className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="consult-contact" className="block text-sm font-medium text-foreground mb-1.5">Email or Phone *</label>
-                    <input
-                      id="consult-contact"
-                      name="contact"
-                      type="text"
-                      required
-                      value={formData.contact}
-                      onChange={handleChange}
-                      placeholder="your@email.com or +254 708 261674"
-                      className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="consult-type" className="block text-sm font-medium text-foreground mb-1.5">Consultation Type</label>
-                    <select
-                      id="consult-type"
-                      name="type"
-                      value={formData.type}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all"
-                    >
-                      <option value="General Wellness Consultation">General Wellness Consultation</option>
-                      <option value="Nutrition & Healthy Eating">Nutrition & Healthy Eating</option>
-                      <option value="Lifestyle & Activity">Lifestyle & Activity</option>
-                      <option value="Rest & Recovery">Rest & Recovery</option>
-                      <option value="Hydration & Detox">Hydration & Detox</option>
-                      <option value="Health Reform Principles">Health Reform Principles</option>
-                      <option value="Family Wellness">Family Wellness</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label htmlFor="consult-format" className="block text-sm font-medium text-foreground mb-1.5">Preferred Format</label>
-                    <select
-                      id="consult-format"
-                      name="format"
-                      value={formData.format}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all"
-                    >
-                      <option value="In-person">In-person (Matasia)</option>
-                      <option value="Virtual">Virtual (online)</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label htmlFor="consult-notes" className="block text-sm font-medium text-foreground mb-1.5">
-                      Anything you'd like us to know?
-                    </label>
-                    <textarea
-                      id="consult-notes"
-                      name="notes"
-                      rows={4}
-                      value={formData.notes}
-                      onChange={handleChange}
-                      placeholder="Your goals, challenges, or preferred days and times"
-                      className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all resize-none"
-                    />
-                  </div>
-                  <p className="text-xs text-muted-foreground">
-                    Your information is kept private and will only be used to arrange your consultation.
-                  </p>
-                  <button
-                    type="submit"
-                    className="w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-sm shadow-md transition-all duration-200 hover:-translate-y-0.5"
-                  >
-                    Submit Request
-                  </button>
-                </form>
-                <div className="mt-5 pt-5 border-t border-border text-center">
-                  <p className="text-xs text-muted-foreground">
-                    Prefer WhatsApp?{' '}
-                    <button onClick={handleWhatsApp} className="text-primary font-medium underline">
-                      Chat with us directly
-                    </button>
-                  </p>
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-      )}
+      <ConsultationFormModal open={formOpen} onClose={closeForm} />
     </div>);
 
 }

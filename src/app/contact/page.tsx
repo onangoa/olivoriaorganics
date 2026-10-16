@@ -5,8 +5,8 @@ import ContactContent from '@/app/contact/components/ContactContent';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Contact Us — OlivoriaOrganics',
-  description: 'Get in touch with OlivoriaOrganics via WhatsApp, email, or our contact form. We\'d love to hear from you about products, consultations, or general enquiries.',
+  title: 'Contact Us — Olivoria Organics',
+  description: 'Get in touch with Olivoria Organics via WhatsApp, email, or our contact form. We\'d love to hear from you about products, consultations, or general enquiries.',
 };
 
 export default function ContactPage() {

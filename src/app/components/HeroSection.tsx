@@ -84,7 +84,7 @@ export default function HeroSection() {
 
             {/* Subtext */}
             <p className="text-lg text-muted-foreground leading-relaxed max-w-xl hero-enter-delay-2">
-              OlivoriaOrganics provides premium organic products, health education, wellness consultations, and lifestyle guidance — rooted in a wholistic approach to health that nurtures body, mind, and spirit.
+              Olivoria Organics provides premium organic products, health education, wellness consultations, and lifestyle guidance — rooted in a wholistic approach to health that nurtures body, mind, and spirit.
             </p>
 
             {/* CTAs */}

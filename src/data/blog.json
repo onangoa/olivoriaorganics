@@ -1,0 +1,205 @@
+{
+  "_readme": [
+    "OUR BLOG — HOW TO ADD A NEW POST",
+    "Each entry in 'posts' becomes an article at /blog/<slug>. Keep the list ordered newest-first.",
+    "Fields: slug (short, unique, url-friendly), title, excerpt (1-2 sentence summary shown on cards),",
+    "category (short topic label), date (e.g. 'October 5, 2026'), readTime (e.g. '5 min read'),",
+    "image (banner URL), alt (image description), featured (set true for ONE post to highlight it),",
+    "sections (the article body: ordered blocks, each with optional 'heading', required 'paragraphs',",
+    "and optional 'list' of bullet points).",
+    "Writing tips: keep paragraphs short (2-4 sentences), one idea per section, use lists for practical",
+    "tips, keep the tone warm and educational, and end with a gentle consultation invitation.",
+    "After adding a post, run 'npm run build' — the page at /blog/<slug> and its sitemap entry are",
+    "generated automatically."
+  ],
+  "posts": [
+    {
+      "slug": "living-well-chronic-conditions",
+      "title": "Living Well with Chronic Conditions: A Wholistic Perspective",
+      "excerpt": "A diagnosis is a chapter, not the whole story. How small daily habits — nourishing food, gentle movement, and genuine rest — support a fuller life alongside your medical care.",
+      "category": "Disease Management",
+      "date": "October 10, 2026",
+      "readTime": "6 min read",
+      "image": "https://img.rocket.new/generatedImages/rocket_gen_img_1031beb16-1772146032935.png",
+      "alt": "Warm wellness consultation setting with natural herbs, fresh produce, and health materials on a wooden table in bright natural light",
+      "featured": true,
+      "sections": [
+        {
+          "paragraphs": [
+            "Living with a chronic condition — whether type 2 diabetes, high blood pressure, arthritis, or another long-term diagnosis — touches every part of life. It shapes how you eat, how you sleep, how you move, and even how you feel about yourself.",
+            "At Olivoria Organics, we believe a diagnosis is a chapter of your story, not the whole of it. Alongside the care you receive from your doctor, the rhythm of your daily life can become one of your greatest sources of strength."
+          ]
+        },
+        {
+          "heading": "Small Habits, Meaningful Change",
+          "paragraphs": [
+            "Wholistic health reform is built on simple, time-tested principles: nourishing food, gentle movement, pure water, sunlight, fresh air, rest, temperance, and trust. None of these require perfection — each begins with small, faithful steps.",
+            "Consider starting with one or two of these supports:"
+          ],
+          "list": [
+            "A whole-food, plant-rich plate at your next meal — more vegetables, legumes, and whole grains",
+            "A short daily walk in the morning sunlight, at whatever pace feels kind to your body",
+            "A consistent evening routine that protects 7–9 hours of rest",
+            "Replacing sugary drinks with water or gentle herbal teas",
+            "A few minutes of quiet each day — deep breathing, gratitude, or prayer"
+          ]
+        },
+        {
+          "heading": "Working Alongside Your Medical Team",
+          "paragraphs": [
+            "Our role is educational and supportive — never a replacement for your doctor, nurse, or pharmacist. Keep attending your appointments, keep taking prescribed medication, and share your lifestyle goals with your medical team.",
+            "Many people find it helpful to bring their wellness plan to their appointments. When your clinicians see the habits you are building, they can encourage you and tailor their guidance to your real life."
+          ]
+        },
+        {
+          "heading": "Comfort and Quality of Life",
+          "paragraphs": [
+            "For those navigating serious or life-limiting illness, the focus gently shifts toward comfort, dignity, and peace. Good nutrition, calming routines, fresh air, and the quiet presence of loved ones all contribute to better days.",
+            "Caregivers need care too. If you are supporting a family member, protect small moments of rest for yourself — you can only pour from a cup that is being refilled."
+          ]
+        },
+        {
+          "heading": "How We Can Help",
+          "paragraphs": [
+            "Our consultations offer a warm, unhurried space to explore what supportive living looks like for your unique situation — including disease management support and palliative care support for individuals and families.",
+            "Wherever you are on this journey, you do not have to walk it alone. Reach out to arrange a conversation."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "beginners-guide-herbal-teas",
+      "title": "A Beginner's Guide to Herbal Teas",
+      "excerpt": "Calm chamomile, refreshing rooibos, warming ginger, and vibrant hibiscus — a gentle introduction to brewing botanical teas that suit your mood and your evenings.",
+      "category": "Tailored Herbal Teas & Extracts",
+      "date": "October 10, 2026",
+      "readTime": "5 min read",
+      "image": "https://images.unsplash.com/photo-1750492787714-8cce00ed35d7",
+      "alt": "Chamomile flowers blooming in a lush green meadow in soft natural light",
+      "featured": false,
+      "sections": [
+        {
+          "paragraphs": [
+            "Herbal teas — properly called tisanes — have accompanied humanity for centuries. They are one of the simplest, most comforting ways to bring botanicals into daily life, and a lovely first step into wholistic living.",
+            "If you are new to herbal teas, begin gently. Choose one or two botanicals, brew them often, and notice how your body and spirit respond."
+          ]
+        },
+        {
+          "heading": "Four Friendly Botanicals to Start With",
+          "paragraphs": [
+            "Each of these botanicals has a long tradition of gentle, everyday use:"
+          ],
+          "list": [
+            "Chamomile — soft, apple-like, and calming; a classic evening companion",
+            "Rooibos — naturally caffeine-free, smooth and sweet; enjoyable any time of day",
+            "Ginger — warming and invigorating; traditionally appreciated after meals",
+            "Hibiscus — tart, ruby-red, and refreshing; wonderful served chilled"
+          ]
+        },
+        {
+          "heading": "Brewing a Good Cup",
+          "paragraphs": [
+            "A few simple practices make all the difference. Use fresh, pure water just off the boil, and cover your cup while it steeps so the gentle aromatic oils do not escape.",
+            "Most botanical teas steep well for 5–10 minutes; roots and barks benefit from a little longer than delicate flowers. Start with about one teaspoon of botanicals per cup, then adjust to your taste."
+          ]
+        },
+        {
+          "heading": "Making It Your Own",
+          "paragraphs": [
+            "Herbal tea is a personal ritual. Some people love a touch of raw honey; others prefer a slice of lemon or a cinnamon stick. Part of the joy is experimenting until the cup feels like yours.",
+            "Our tailored herbal tea blends are crafted to your preference — visit our products page or enquire via WhatsApp, and we will help you find your perfect cup."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "five-kitchen-spices-wholistic-kitchen",
+      "title": "Five Kitchen Spices Every Wholistic Kitchen Should Have",
+      "excerpt": "Turmeric, cinnamon, ginger, cumin, and black pepper — small jars of flavour that carry centuries of traditional use and make wholesome food a daily delight.",
+      "category": "Kitchen Spices",
+      "date": "October 10, 2026",
+      "readTime": "5 min read",
+      "image": "https://images.unsplash.com/photo-1713084873914-e267f5ab3d83",
+      "alt": "A close up of a bunch of cinnamon sticks arranged on a natural surface",
+      "featured": false,
+      "sections": [
+        {
+          "paragraphs": [
+            "A wholistic kitchen does not need to be complicated. Often it is the small jars on the spice shelf that do the quiet work — adding depth of flavour to simple, whole-food meals while carrying centuries of traditional use."
+          ]
+        },
+        {
+          "heading": "The Five to Keep Within Reach",
+          "paragraphs": [
+            "These five spices are versatile, widely loved, and earn their place in everyday cooking:"
+          ],
+          "list": [
+            "Turmeric — golden and earthy; pairs beautifully with black pepper and warm dishes",
+            "Cinnamon — sweetly aromatic; lovely in porridges, bakes, and teas",
+            "Ginger — warmly spiced; enlivens stir-fries, broths, and infusions",
+            "Cumin — toasty and grounding; a backbone for legume and vegetable dishes",
+            "Black pepper — sharp and bright; enhances both flavour and turmeric absorption"
+          ]
+        },
+        {
+          "heading": "Sourcing and Storing Your Spices",
+          "paragraphs": [
+            "Whenever possible, choose organic, whole spices from sources you trust, and grind small batches as you need them — freshly ground spice is noticeably more fragrant than pre-ground.",
+            "Store your spices in airtight jars away from heat and light. As a general guide, ground spices keep their character for several months, while whole spices stay lively for a year or more."
+          ]
+        },
+        {
+          "heading": "Let Flavour Lead You to Better Meals",
+          "paragraphs": [
+            "When simple food tastes wonderful, you look forward to eating well. A well-spiced pot of lentils or a cinnamon-dusted breakfast bowl makes wholesome eating something to enjoy rather than endure.",
+            "Explore our kitchen spices collection to stock your shelf — every enquiry begins with a friendly WhatsApp conversation."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "why-dried-fruits-deserve-a-place-in-your-pantry",
+      "title": "Why Dried Fruits Deserve a Place in Your Pantry",
+      "excerpt": "Sun-dried fruits are nature's candy — naturally sweet, fibre-rich, and endlessly versatile. Here is how to choose quality dried fruits and enjoy them well.",
+      "category": "Dried Fruits",
+      "date": "October 10, 2026",
+      "readTime": "4 min read",
+      "image": "https://images.unsplash.com/photo-1781773338904-a92e866523a2",
+      "alt": "Hands picking black, red, and golden raisins from a tray of dried fruits",
+      "featured": false,
+      "sections": [
+        {
+          "paragraphs": [
+            "Long before packaged sweets, people enjoyed the concentrated sweetness of sun-dried fruits. Dates, raisins, apricots, mango, and figs have nourished families across cultures for generations — and they remain one of the simplest wholesome treats available."
+          ]
+        },
+        {
+          "heading": "What Makes Dried Fruits Special",
+          "paragraphs": [
+            "When fruit is dried well, its natural sugars, fibre, and minerals are gently concentrated into a satisfying, chewy bite. A small handful can quiet a sweet craving while contributing fibre, potassium, and iron to your day.",
+            "As with everything, temperance is the guide: dried fruits are best enjoyed as a complement to fresh fruits, vegetables, and whole grains — not a replacement for them."
+          ]
+        },
+        {
+          "heading": "Choosing Quality Dried Fruits",
+          "paragraphs": [
+            "The best dried fruits have one ingredient — the fruit itself. When shopping, look for:"
+          ],
+          "list": [
+            "No added sugar or syrups — the fruit is sweet enough",
+            "No sulphur dioxide or preservatives where possible",
+            "Organic sourcing to minimise chemical exposure",
+            "A soft, natural colour rather than an unnaturally bright sheen"
+          ]
+        },
+        {
+          "heading": "Simple Ways to Enjoy Them",
+          "paragraphs": [
+            "Chop dates into morning porridge, toss raisins through a grain salad, simmer dried apricots into a warming compote, or tuck a few figs beside roasted vegetables. Dried fruits also make an easy, nourishing addition to lunchboxes and travel bags.",
+            "Our dried fruits are selected with the same care we bring to everything we offer — explore the collection and enquire via WhatsApp."
+          ]
+        }
+      ]
+    }
+  ]
+}

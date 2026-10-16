@@ -1,0 +1,437 @@
+{
+  "_readme": [
+    "PRODUCTS — HOW TO ADD OR EDIT A PRODUCT",
+    "Each entry in 'products' becomes a card on the Products page (/products) and a detail page at /products/<id>.",
+    "Required fields: id (unique), name, category, description (short card summary), price (e.g. 'KSh 1,250'),",
+    "availability (e.g. 'In Stock'), featured (true = 'Featured' badge + homepage section), image, alt (image description).",
+    "Optional fields (shown on the product's detail page): longDescription (fuller intro), highlights ('Why choose'",
+    "bullets), nutritionNote + nutrition (per-100g values), benefits (bullet list), usage (how-to-use bullets),",
+    "caution (safety note shown in a highlighted box).",
+    "IMAGES: to use a local image, save your photo in public/assets/images/products/ (e.g.",
+    "public/assets/images/products/almonds.jpg) and set image to '/assets/images/products/almonds.jpg'.",
+    "Until the image file is added, a placeholder is shown automatically.",
+    "Keep entries grouped by category. After editing, run 'npm run build' to publish."
+  ],
+  "products": [
+    {
+      "id": "organic-hemp-seeds",
+      "name": "Organic Hemp Seeds",
+      "category": "Seeds & Nuts",
+      "description": "Hulled organic hemp seeds. A complete plant protein source. Excellent added to smoothies, salads, and cereals.",
+      "price": "KSh 1,250",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "https://img.rocket.new/generatedImages/rocket_gen_img_1e74044d8-1772057607386.png",
+      "alt": "Small bowl of organic hemp seeds on natural linen cloth with green plants in background"
+    },
+    {
+      "id": "organic-flaxseeds",
+      "name": "Organic Golden Flaxseeds",
+      "category": "Seeds & Nuts",
+      "description": "Whole organic golden flaxseeds. Rich in omega-3 fatty acids and dietary fibre. A wholesome addition to any diet.",
+      "price": "KSh 700",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "https://images.unsplash.com/photo-1707627600174-10ca22151058",
+      "alt": "Golden flaxseeds in a small wooden bowl on a light background with natural texture"
+    },
+    {
+      "id": "organic-mixed-nuts",
+      "name": "Organic Mixed Nuts",
+      "category": "Seeds & Nuts",
+      "description": "A wholesome blend of raw walnuts, pecans, almonds, and pistachios. Naturally rich in healthy fats, plant protein, and minerals.",
+      "price": "KSh 1,400",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "https://images.unsplash.com/photo-1543158181-1274e5362710",
+      "alt": "Mix of organic walnuts, pecans, almonds, and pistachios arranged in a wooden bowl"
+    },
+    {
+      "id": "organic-almonds",
+      "name": "Organic Almonds",
+      "category": "Seeds & Nuts",
+      "description": "Naturally pure almonds rich in plant protein, healthy fats, fibre, vitamin E, and essential minerals. A crunchy, wholesome snack for everyday nutrition.",
+      "price": "KSh 1,200",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Organic almonds in a wooden bowl on a natural surface",
+      "longDescription": "Almonds are healthy nuts with numerous benefits — high in protein, healthy fats, fibre, vitamins, and minerals. They provide calories and vitamins for their antioxidant benefits, plus magnesium for healthy bodily function and many other great nutrients that promote your health.",
+      "highlights": [
+        "Naturally Pure — no artificial colours, flavours, or preservatives added.",
+        "Rich in Protein & Healthy Fats — everyday nutrition with protein and good fats your body absorbs naturally.",
+        "Naturally Nutrient-Dense — an excellent source of dietary fibre and essential minerals, including vitamin E.",
+        "Naturally Crunchy & Delicious — nice and crunchy, with a good nutty flavour in every munch.",
+        "Hygienically Packed — quality packed to seal in freshness, flavour, and crunchiness."
+      ],
+      "nutritionNote": "Per 100g, almonds supply the following nutritional values:",
+      "nutrition": [
+        "Energy: 578 kcal",
+        "Protein: 21g",
+        "Total Fat: 49.6g",
+        "Carbohydrates: 20g",
+        "Dietary Fibre: 12.5g",
+        "Vitamin E: 26mg",
+        "Calcium: 264mg",
+        "Magnesium: 270mg",
+        "Phosphorus: 482mg",
+        "Iron: 4mg"
+      ],
+      "benefits": [
+        "Rich in plant-based protein.",
+        "Rich in monounsaturated fats that support good heart health.",
+        "Rich in vitamin E to protect against cell damage and support skin health.",
+        "Provides dietary fibre, which aids good digestion.",
+        "Good source of magnesium, calcium, phosphorus, and B vitamins."
+      ]
+    },
+    {
+      "id": "roasted-cashew-nuts",
+      "name": "Roasted Cashew Nuts",
+      "category": "Seeds & Nuts",
+      "description": "Oven-roasted cashews with a touch of salt — a deliciously crunchy, protein-rich snack with healthy fats and essential minerals. Best enjoyed in moderation.",
+      "price": "KSh 1,800",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Roasted salted cashew nuts in a wooden bowl on a natural surface",
+      "longDescription": "Cashews are a good source of healthy dietary fats, which are vital for our body to absorb fat-soluble vitamins and produce fatty acids that are crucial for brain development and blood clotting.",
+      "highlights": [
+        "Naturally Delicious — a delicious, rich, crunchy bite, roasted with a touch of salt.",
+        "Protein Rich — a natural way to get protein into your diet every day.",
+        "Healthy Fats — healthy fats as a natural constituent of the nut.",
+        "Expertly Roasted — oven-roasted for a perfectly crisp and savoury flavour.",
+        "Hygienically Packed — sealed to keep out external elements and lock in quality and freshness.",
+        "Versatile Snack — delicious to nibble on, bake with, and share around.",
+        "Trusted Quality — specially prepared to ensure a fresh and delicious taste."
+      ],
+      "nutritionNote": "Per 100g, roasted cashews supply approximately:",
+      "nutrition": [
+        "Calories: 554 kcal",
+        "Protein: 18.2g",
+        "Total Fat: 43.9g",
+        "Total Carbohydrates: 36.3g",
+        "Fibre: 4.1g",
+        "Sugars: 5.9g",
+        "Copper: ~2.0mg (rich source)",
+        "Magnesium: ~250–292mg",
+        "Phosphorus: ~593mg",
+        "Manganese: ~1.4–2.0mg",
+        "Zinc: ~5.5–6.0mg",
+        "Iron: ~5.0–7.0mg",
+        "Potassium: ~550–660mg",
+        "Calcium: ~34–37mg",
+        "Selenium: ~20–33µg",
+        "Niacin (B3): ~1–7.3mg",
+        "Thiamine (B1): ~0.4–0.6mg",
+        "Vitamin B6: ~0.4mg",
+        "Pantothenic Acid (B5): ~1mg",
+        "Folate (B9): ~25µg",
+        "Vitamin K: ~34µg",
+        "Riboflavin (B2): ~0.1–0.2mg",
+        "Vitamin E: ~1mg",
+        "Vitamin C: ~0.5mg"
+      ],
+      "benefits": [
+        "A good source of protein and unsaturated fat.",
+        "Heart health — heart-healthy fats that may help balance cholesterol levels, supporting cardiovascular health.",
+        "Antioxidant protection — a source of antioxidants, including polyphenols, that help the body deal with oxidative stress.",
+        "Brain health — protein, essential fats, vitamins, and minerals working together to support memory and focus.",
+        "Bone strength — magnesium, phosphorus, copper, and zinc to support bone density.",
+        "Good for the eyes — contains lutein and zeaxanthin, which help protect the eyes and support healthy eyesight.",
+        "A source of dietary fibre, and contains oleic and palmitic acids."
+      ],
+      "usage": [
+        "Snacking — enjoy straight from the pack.",
+        "Cooking — blend into cashew nut butter for cooking purposes.",
+        "Baking — incorporate into your cakes and breads to boost the nutritional profile.",
+        "Smoothies — add to your smoothies for nutritional richness."
+      ],
+      "caution": "NB: Roasted cashew nuts are best eaten in moderation."
+    },
+    {
+      "id": "cold-pressed-coconut-oil",
+      "name": "Cold-Pressed Coconut Oil",
+      "category": "Cold-Pressed Oils & Essential Oils",
+      "description": "Unrefined, virgin coconut oil. Part of a healthy lifestyle for cooking and natural personal care. Rich in medium-chain fatty acids.",
+      "price": "KSh 1,500",
+      "availability": "In Stock",
+      "featured": true,
+      "image": "https://img.rocket.new/generatedImages/rocket_gen_img_154257613-1772368886880.png",
+      "alt": "Glass jar of coconut oil with fresh coconut on a white surface in bright natural light"
+    },
+    {
+      "id": "black-seed-oil",
+      "name": "Organic Black Seed Oil",
+      "category": "Cold-Pressed Oils & Essential Oils",
+      "description": "Cold-pressed Nigella sativa oil. Traditionally used across cultures for centuries as part of a healthy lifestyle.",
+      "price": "KSh 1,750",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "https://img.rocket.new/generatedImages/rocket_gen_img_1f37ce186-1784524443233.png",
+      "alt": "Dark amber bottle of black seed oil with seeds scattered on a natural wooden surface"
+    },
+    {
+      "id": "lavender-essential-oil",
+      "name": "Organic Lavender Essential Oil",
+      "category": "Cold-Pressed Oils & Essential Oils",
+      "description": "Pure organic lavender essential oil. Traditionally used to support relaxation and a calming atmosphere.",
+      "price": "KSh 1,150",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "https://img.rocket.new/generatedImages/rocket_gen_img_1eb19e721-1786266981685.png",
+      "alt": "Small amber bottle of lavender essential oil surrounded by fresh purple lavender flowers"
+    },
+    {
+      "id": "eucalyptus-essential-oil",
+      "name": "Eucalyptus Essential Oil",
+      "category": "Cold-Pressed Oils & Essential Oils",
+      "description": "Steam-distilled from Eucalyptus globulus leaves — a distinct, invigorating aroma traditionally used to support clear breathing, relaxation, and everyday wellbeing.",
+      "price": "KSh 1,000",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Bottle of eucalyptus essential oil with fresh eucalyptus leaves on a natural surface",
+      "longDescription": "Eucalyptus essential oil is derived from the leaves of the Eucalyptus globulus tree through a steam distillation process. Its concentration and richness give it a distinct aroma suitable for many uses — from aromatherapy and decongestion to traditional wellness and personal care. Altogether, its warming topical comfort, respiratory support, and natural insect-repelling benefit make it a versatile and valuable natural remedy for daily wellbeing.",
+      "nutrition": [
+        "Rich in 1,8-cineole (eucalyptol) — a versatile phytochemical with a wide range of traditional applications."
+      ],
+      "benefits": [
+        "Respiratory health — traditionally used to ease congestion when the airways feel compromised; 1,8-cineole helps break down mucus, easing colds and coughs.",
+        "Anti-inflammatory — the compounds in eucalyptus oil may ease aches associated with conditions like rheumatoid arthritis and general muscle strain when applied topically.",
+        "Antimicrobial — exhibits activity against bacteria and viruses and helps suppress biofilm formation; commonly used in natural cleaning and topical products.",
+        "Mental clarity & relaxation — the invigorating scent is used in aromatherapy to create a refreshing environment, promote relaxation, and increase focus and mental freshness.",
+        "Oral health — often appears in toothpaste and mouthwash because it combats bacteria, helping reduce bad breath and supporting a fresher, cleaner mouth.",
+        "Natural insect repellent — its scent helps keep mosquitoes, flies, and wasps away, making it especially useful in the summer months."
+      ],
+      "usage": [
+        "Inhalation — add a few drops to hot water or a tissue to help clear the airways.",
+        "Aromatherapy — use up to 10 drops in a diffuser for continuous support throughout the day.",
+        "Massage therapy — mix with a carrier oil and massage into the chest, back, or sore muscles.",
+        "Bath soak — add a few drops to warm bath water for relaxation and comfort.",
+        "Topical application — dilute with a carrier oil (such as coconut or jojoba) before applying to the chest, throat, or affected areas for muscle or joint relief.",
+        "Oral use — one to two drops in honey or a carrier oil, only when the oil is clearly indicated as safe for oral use."
+      ]
+    },
+    {
+      "id": "peppermint-essential-oil",
+      "name": "Peppermint Essential Oil",
+      "category": "Cold-Pressed Oils & Essential Oils",
+      "description": "Steam-distilled from Mentha × piperita leaves and flowering tops — high menthol content gives an intense cooling sensation and wide versatility for everyday wellness.",
+      "price": "KSh 1,100",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/images/products/peppermint-essential-oil.png",
+      "alt": "Bottle of peppermint essential oil with fresh peppermint leaves on a natural surface",
+      "longDescription": "Peppermint essential oil is derived from the leaves and flowering tops of Mentha × piperita through a steam distillation process. It is known for its high menthol content, which gives it both its intense cooling sensation and its wide versatility.",
+      "nutrition": [
+        "Rich in menthol and menthone, which provide the cooling sensation and fresh mint aroma."
+      ],
+      "benefits": [
+        "Aromatherapy — the fresh menthol aroma helps create a sense of openness in the airways, making breathing feel more comfortable during seasonal congestion.",
+        "Digestive comfort — in a diluted massage blend, peppermint oil can feel soothing on the stomach during periods of digestive sluggishness, bloating, indigestion, or gas.",
+        "Mental freshness — traditionally used to enhance mental focus, memory, and alertness through diffusion or direct inhalation.",
+        "Tension relief — the cooling sensation, when diluted and applied to the temples or neck, can help relieve feelings of tightness and pressure."
+      ],
+      "usage": [
+        "Aromatherapy inhalation — add a few drops to a diffuser to support focus and alertness, or inhale from a tissue or cotton pad for a quick sensory boost.",
+        "Steam inhalation — add a small amount to a bowl of warm water for a refreshing steam, often used during periods of congestion.",
+        "Topical application — dilute with a carrier oil (such as coconut or olive) and apply to relieve muscle discomfort, headaches, or itching. Perform a patch test before full application.",
+        "Nausea relief — inhalation or aromatherapy using peppermint oil has been used to reduce nausea and ease vomiting, including after surgery or chemotherapy.",
+        "Massage blends — diluted with a carrier oil, massage into the abdomen, neck, shoulders, or legs to soothe tense, tired areas after long days or physical activity.",
+        "Bathing — a few drops diluted in a carrier oil or bath base create an invigorating soak."
+      ],
+      "caution": "For external use only. Avoid contact with eyes, lips, mucous membranes, and broken skin. Always dilute with a carrier oil before applying to the skin — never use undiluted on the skin."
+    },
+    {
+      "id": "lemongrass-essential-oil",
+      "name": "Lemongrass Essential Oil",
+      "category": "Cold-Pressed Oils & Essential Oils",
+      "description": "Steam-distilled from Cymbopogon citratus leaves and stalks — a powerful citrus aroma traditionally used in aromatherapy to relieve stress and anxiety, with digestive and household uses.",
+      "price": "KSh 950",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Bottle of lemongrass essential oil with fresh lemongrass stalks on a natural surface",
+      "longDescription": "Lemongrass essential oil is derived from the leaves and stalks of Cymbopogon citratus through a steam distillation method of extraction. It has a powerful citrus scent, recommended for aromatherapy that may help relieve stress and anxiety, and it is also traditionally used for digestive comfort. From its therapeutic properties to its applications in beauty and household cleaning, it offers a natural, effective solution for many everyday needs.",
+      "nutrition": [
+        "Rich in citral, which provides the strong lemon scent, along with geraniol and limonene."
+      ],
+      "benefits": [
+        "Antibacterial — traditionally used as a natural remedy that may help heal wounds and help prevent infection, including against bacteria that cause skin and intestinal infections.",
+        "Mental health — the calming, mild smell of lemongrass oil is known in aromatherapy to help relieve anxiety and irritability.",
+        "Digestive health — used as a traditional remedy for a number of digestive concerns, ranging from stomachaches to gastric ulcers.",
+        "Natural deodorizer and cleaner — use as a natural, safe air freshener or deodorizer around the home.",
+        "Natural bug repellent — its high citral and geraniol content helps repel bugs such as mosquitoes and ants.",
+        "Antifungal — the citral and limonene content can kill or stifle the growth of fungi, helping you avoid infections such as ringworm and athlete's foot."
+      ],
+      "usage": [
+        "Aromatherapy — diffuse throughout your home using an oil diffuser or vaporizer.",
+        "Steam inhalation — add a couple of drops to a bowl of hot water, cover your head with a towel, close your eyes, and breathe in gently.",
+        "Massage therapy — dilute in a carrier oil like jojoba or sweet almond; its crisp aroma provides a spa-like touch that feels both refreshing and soothing.",
+        "Room sprays — mix with distilled water and witch hazel for an easy way to freshen linens, fabrics, and the air."
+      ]
+    },
+    {
+      "id": "oregano-essential-oil",
+      "name": "Oregano Essential Oil",
+      "category": "Cold-Pressed Oils & Essential Oils",
+      "description": "Steam-distilled from Origanum vulgare leaves — one of the most powerful antioxidant essential oils, rich in carvacrol and thymol, traditionally used to support immunity and digestion.",
+      "price": "KSh 1,250",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Bottle of oregano essential oil with fresh oregano leaves on a natural surface",
+      "longDescription": "Oregano essential oil is derived from the leaves of Origanum vulgare through a steam distillation process. It is one of the most powerful and versatile antioxidant essential oils — traditionally used to stimulate the immune and digestive systems and strengthen the body's natural energy. From its antimicrobial and antifungal strength to skin, hair, and immune support, it offers a spectrum of wellness benefits.",
+      "nutrition": [
+        "Rich in carvacrol — the main active compound in oregano oil.",
+        "Rich in thymol — which may help protect against toxins and fight fungal infections."
+      ],
+      "benefits": [
+        "Aromatherapy — used in diffusers to refresh the air (typically in short bursts of 5–10 minutes in well-ventilated spaces).",
+        "Digestive support — traditionally used as part of herbal protocols for small intestinal bacterial overgrowth (SIBO) and other digestive concerns such as harmful microbes and digestive discomfort.",
+        "Sore throat relief — traditionally used for quick relief against sore throat.",
+        "Antimicrobial — traditionally used against drug-resistant bacteria and yeast.",
+        "Immune support — supports immunity due to its high antioxidant activity.",
+        "Antifungal — studies indicate oregano oil can disrupt fungal cells (such as candida), offering a natural complementary approach to traditional antifungal treatments."
+      ],
+      "usage": [
+        "Internally (diluted) — add one to two drops to a carrier oil or water for immune and digestive support.",
+        "Topically — mix with a carrier oil for skin applications.",
+        "Aromatherapy — inhale for respiratory relief."
+      ]
+    },
+    {
+      "id": "organic-medjool-dates",
+      "name": "Organic Medjool Dates",
+      "category": "Dried Fruits",
+      "description": "Naturally sweet, sun-ripened Medjool dates. A wholesome source of dietary fibre and natural energy for the whole family.",
+      "price": "KSh 900",
+      "availability": "In Stock",
+      "featured": true,
+      "image": "https://images.unsplash.com/photo-1774857247287-d68599847107",
+      "alt": "Pile of naturally sweet organic dried Medjool dates on a rustic natural surface"
+    },
+    {
+      "id": "organic-dried-fruit-mix",
+      "name": "Organic Dried Fruit Mix",
+      "category": "Dried Fruits",
+      "description": "Assorted sun-dried fruit slices with nothing added — no refined sugar, no preservatives. A naturally sweet, wholesome snack.",
+      "price": "KSh 1,000",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "https://images.unsplash.com/photo-1536700626482-f7d798222061",
+      "alt": "Assorted organic dried fruit slices arranged beautifully on a rustic wooden surface"
+    },
+    {
+      "id": "organic-turmeric-blend",
+      "name": "Organic Turmeric Blend",
+      "category": "Kitchen Spices",
+      "description": "Whole-food turmeric with black pepper for enhanced absorption. Traditionally used for general wellness support.",
+      "price": "KSh 1,100",
+      "availability": "In Stock",
+      "featured": true,
+      "image": "https://img.rocket.new/generatedImages/rocket_gen_img_12d768334-1766740607394.png",
+      "alt": "Vibrant yellow turmeric powder and fresh turmeric root on a wooden surface"
+    },
+    {
+      "id": "organic-cinnamon-sticks",
+      "name": "Organic Cinnamon Sticks",
+      "category": "Kitchen Spices",
+      "description": "Aromatic Ceylon cinnamon sticks, sun-dried and hand-rolled. Traditionally used to add warm, gentle flavour to teas, porridges, and bakes.",
+      "price": "KSh 750",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "https://images.unsplash.com/photo-1756363665372-9110664daaa6",
+      "alt": "Close-up of aromatic organic dried cinnamon sticks piled together"
+    },
+    {
+      "id": "organic-chamomile-flowers",
+      "name": "Organic Chamomile Flowers",
+      "category": "Botanical Herbs",
+      "description": "Sun-dried whole chamomile blossoms. Traditionally used to support relaxation and restful evenings.",
+      "price": "KSh 850",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "https://images.unsplash.com/photo-1783410086695-b99d97f2fcd5",
+      "alt": "Delicate organic chamomile flowers with yellow centers against a soft natural backdrop"
+    },
+    {
+      "id": "dried-hibiscus-flowers",
+      "name": "Dried Hibiscus Flowers",
+      "category": "Botanical Herbs",
+      "description": "Naturally tart, ruby-red hibiscus blossoms for refreshing hot or iced infusions. Traditionally used to support general wellness.",
+      "price": "KSh 800",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "https://images.unsplash.com/photo-1765118527329-6ed7fa0d10ac",
+      "alt": "Ruby-red hibiscus infusion in a glass mug with cinnamon sticks and dried fruit"
+    },
+    {
+      "id": "organic-moringa-powder",
+      "name": "Organic Moringa Powder",
+      "category": "Plant & Herbal Extracts",
+      "description": "Traditionally used to support energy and nutritional wellbeing. Rich in vitamins, minerals, and antioxidants. May support general vitality as part of a healthy lifestyle.",
+      "price": "KSh 1,350",
+      "availability": "In Stock",
+      "featured": true,
+      "image": "https://img.rocket.new/generatedImages/rocket_gen_img_1c760dfda-1784615633062.png",
+      "alt": "Green moringa powder in a wooden bowl with fresh moringa leaves on a cream background"
+    },
+    {
+      "id": "spirulina-powder",
+      "name": "Organic Spirulina Powder",
+      "category": "Plant & Herbal Extracts",
+      "description": "Nutrient-dense blue-green algae powder. Traditionally used to support general nutritional wellbeing.",
+      "price": "KSh 1,450",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "https://img.rocket.new/generatedImages/rocket_gen_img_1f9a1b3ea-1772131894338.png",
+      "alt": "Vibrant green spirulina powder in a wooden spoon surrounded by fresh green plants"
+    },
+    {
+      "id": "aloe-vera-gel",
+      "name": "Pure Aloe Vera Gel",
+      "category": "Plant & Herbal Extracts",
+      "description": "Certified organic aloe vera gel. Traditionally used to support skin health and soothing topical care.",
+      "price": "KSh 950",
+      "availability": "In Stock",
+      "featured": true,
+      "image": "https://img.rocket.new/generatedImages/rocket_gen_img_197ec325b-1772072820733.png",
+      "alt": "Fresh aloe vera plant with clear gel on bright white background in natural setting"
+    },
+    {
+      "id": "rooibos-wellness-tea",
+      "name": "Rooibos Wellness Tea",
+      "category": "Tailored Herbal Teas & Extracts",
+      "description": "South African rooibos blended with chamomile and lavender. Traditionally used to support relaxation. May support restful sleep as part of a healthy routine.",
+      "price": "KSh 850",
+      "availability": "In Stock",
+      "featured": true,
+      "image": "https://img.rocket.new/generatedImages/rocket_gen_img_1ead2fd92-1780244500039.png",
+      "alt": "Warm cup of rooibos tea with dried flowers on a wooden tray in soft natural light"
+    },
+    {
+      "id": "organic-ginger-tea",
+      "name": "Organic Ginger & Lemon Tea",
+      "category": "Tailored Herbal Teas & Extracts",
+      "description": "Warming blend of organic ginger root and lemon peel. Traditionally used to support digestive comfort and warmth.",
+      "price": "KSh 800",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "https://images.unsplash.com/photo-1682530016814-6a1c1311cd6e",
+      "alt": "Fresh ginger slices and lemon in hot water in a clear glass cup on wooden surface"
+    },
+    {
+      "id": "tailored-chamomile-calm-tea",
+      "name": "Tailored Chamomile Calm Tea",
+      "category": "Tailored Herbal Teas & Extracts",
+      "description": "A calming blend of chamomile and gentle complementary botanicals, tailored to your preference. Traditionally used to support relaxation and restful sleep.",
+      "price": "KSh 950",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "https://images.unsplash.com/photo-1749105862005-6e0409c8c55a",
+      "alt": "Calming cup of chamomile tea with floating blossoms in a dark ceramic cup on a marble table"
+    }
+  ]
+}

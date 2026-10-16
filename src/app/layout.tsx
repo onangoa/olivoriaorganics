@@ -29,13 +29,13 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
-  title: 'OlivoriaOrganics — Wholistic Organic Health & Wellness',
-  description: 'OlivoriaOrganics offers premium organic products, health consultations, and wholistic wellness education rooted in natural living and Christian health principles.',
+  title: 'Olivoria Organics — Wholistic Organic Health & Wellness',
+  description: 'Olivoria Organics offers premium organic products, health consultations, and wholistic wellness education rooted in natural living and Christian health principles.',
   icons: {
     icon: [{ url: '/favicon.ico', type: 'image/x-icon' }],
   },
   openGraph: {
-    title: 'OlivoriaOrganics — Wholistic Organic Wellness',
+    title: 'Olivoria Organics — Wholistic Organic Wellness',
     description: 'Premium organic products, health education, and wellness consultations rooted in natural living.',
     images: [{ url: '/assets/images/app_logo.png', width: 1200, height: 630 }],
   },

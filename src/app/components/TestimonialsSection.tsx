@@ -4,22 +4,22 @@ import React, { useEffect, useRef } from 'react';
 
 const testimonials = [
   {
-    quote: 'OlivoriaOrganics changed how my whole family approaches food and wellness. The moringa powder has become a daily staple, and the health guidance we received was practical and encouraging.',
-    name: 'Thandi Mokoena',
-    role: 'Mother of three, Johannesburg',
-    initial: 'T',
+    quote: 'Olivoria Organics changed how my whole family approaches food and wellness. The moringa powder has become a daily staple in our home, and the health guidance we received at their Matasia outlet was practical and encouraging.',
+    name: 'Wanjiru Kariuki',
+    role: 'Mother of three, Nairobi',
+    initial: 'W',
   },
   {
     quote: 'I was skeptical at first, but after my first consultation I felt genuinely heard and supported. The wholistic approach — looking at my whole life, not just symptoms — was exactly what I needed.',
-    name: 'Sipho Dlamini',
-    role: 'Teacher, Pretoria',
-    initial: 'S',
+    name: 'Daniel Otieno',
+    role: 'Teacher, Kisumu',
+    initial: 'D',
   },
   {
-    quote: 'The quality of the organic products is exceptional. You can taste the difference. I especially love the rooibos blend — it has become my evening ritual for winding down.',
-    name: 'Amara Osei',
-    role: 'Wellness enthusiast, Cape Town',
-    initial: 'A',
+    quote: 'The quality of the organic products is exceptional — you can taste the difference. I especially love the herbal tea blend; it has become my evening ritual for winding down after a long day.',
+    name: 'Grace Naliaka',
+    role: 'Wellness enthusiast, Ngong',
+    initial: 'G',
   },
 ];
 

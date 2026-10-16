@@ -1,40 +1,18 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import AppImage from '@/components/ui/AppImage';
+import type { Product } from '@/lib/content';
 
 const WHATSAPP_NUMBER = '254708261674';
 
-const categories = ['All', 'Organic Foods', 'Herbal Teas', 'Herbs & Botanicals', 'Natural Supplements', 'Personal Care', 'Organic Seeds', 'Wellness Products'];
-
-interface Product {
-  id: string;
-  name: string;
-  category: string;
-  description: string;
-  price: string;
-  availability: string;
-  featured: boolean;
-  image: string;
-  alt: string;
+interface ProductsContentProps {
+  products: Product[];
 }
 
-const allProducts: Product[] = [
-{ id: 'organic-moringa-powder', name: 'Organic Moringa Powder', category: 'Natural Supplements', description: 'Traditionally used to support energy and nutritional wellbeing. Rich in vitamins, minerals, and antioxidants. May support general vitality as part of a healthy lifestyle.', price: 'KSh 1,350', availability: 'In Stock', featured: true, image: "https://img.rocket.new/generatedImages/rocket_gen_img_1c760dfda-1784615633062.png", alt: 'Green moringa powder in a wooden bowl with fresh moringa leaves on a cream background' },
-{ id: 'rooibos-wellness-tea', name: 'Rooibos Wellness Tea', category: 'Herbal Teas', description: 'South African rooibos blended with chamomile and lavender. Traditionally used to support relaxation. May support restful sleep as part of a healthy routine.', price: 'KSh 850', availability: 'In Stock', featured: true, image: "https://img.rocket.new/generatedImages/rocket_gen_img_1ead2fd92-1780244500039.png", alt: 'Warm cup of rooibos tea with dried flowers on a wooden tray in soft natural light' },
-{ id: 'cold-pressed-coconut-oil', name: 'Cold-Pressed Coconut Oil', category: 'Organic Foods', description: 'Unrefined, virgin coconut oil. Part of a healthy lifestyle for cooking and natural personal care. Rich in medium-chain fatty acids.', price: 'KSh 1,500', availability: 'In Stock', featured: true, image: "https://img.rocket.new/generatedImages/rocket_gen_img_154257613-1772368886880.png", alt: 'Glass jar of coconut oil with fresh coconut on a white surface in bright natural light' },
-{ id: 'organic-turmeric-blend', name: 'Organic Turmeric Blend', category: 'Herbs & Botanicals', description: 'Whole-food turmeric with black pepper for enhanced absorption. Traditionally used for general wellness support.', price: 'KSh 1,100', availability: 'In Stock', featured: true, image: "https://img.rocket.new/generatedImages/rocket_gen_img_12d768334-1766740607394.png", alt: 'Vibrant yellow turmeric powder and fresh turmeric root on a wooden surface' },
-{ id: 'organic-hemp-seeds', name: 'Organic Hemp Seeds', category: 'Organic Seeds', description: 'Hulled organic hemp seeds. A complete plant protein source. Excellent added to smoothies, salads, and cereals.', price: 'KSh 1,250', availability: 'In Stock', featured: false, image: "https://img.rocket.new/generatedImages/rocket_gen_img_1e74044d8-1772057607386.png", alt: 'Small bowl of organic hemp seeds on natural linen cloth with green plants in background' },
-{ id: 'aloe-vera-gel', name: 'Pure Aloe Vera Gel', category: 'Personal Care', description: 'Certified organic aloe vera gel. Traditionally used to support skin health and soothing topical care.', price: 'KSh 950', availability: 'In Stock', featured: true, image: "https://img.rocket.new/generatedImages/rocket_gen_img_197ec325b-1772072820733.png", alt: 'Fresh aloe vera plant with clear gel on bright white background in natural setting' },
-{ id: 'organic-ginger-tea', name: 'Organic Ginger & Lemon Tea', category: 'Herbal Teas', description: 'Warming blend of organic ginger root and lemon peel. Traditionally used to support digestive comfort and warmth.', price: 'KSh 800', availability: 'In Stock', featured: false, image: "https://images.unsplash.com/photo-1682530016814-6a1c1311cd6e", alt: 'Fresh ginger slices and lemon in hot water in a clear glass cup on wooden surface' },
-{ id: 'black-seed-oil', name: 'Organic Black Seed Oil', category: 'Natural Supplements', description: 'Cold-pressed Nigella sativa oil. Traditionally used across cultures for centuries as part of a healthy lifestyle.', price: 'KSh 1,750', availability: 'In Stock', featured: false, image: "https://img.rocket.new/generatedImages/rocket_gen_img_1f37ce186-1784524443233.png", alt: 'Dark amber bottle of black seed oil with seeds scattered on a natural wooden surface' },
-{ id: 'organic-flaxseeds', name: 'Organic Golden Flaxseeds', category: 'Organic Seeds', description: 'Whole organic golden flaxseeds. Rich in omega-3 fatty acids and dietary fibre. A wholesome addition to any diet.', price: 'KSh 700', availability: 'In Stock', featured: false, image: "https://images.unsplash.com/photo-1707627600174-10ca22151058", alt: 'Golden flaxseeds in a small wooden bowl on a light background with natural texture' },
-{ id: 'natural-charcoal-soap', name: 'Activated Charcoal Soap', category: 'Personal Care', description: 'Handcrafted natural soap with activated charcoal and tea tree. Part of a natural personal care routine.', price: 'KSh 600', availability: 'In Stock', featured: false, image: "https://images.unsplash.com/photo-1618840152526-92682643af2d", alt: 'Dark charcoal soap bars on a natural stone surface with green plants and clean white towel' },
-{ id: 'spirulina-powder', name: 'Organic Spirulina Powder', category: 'Natural Supplements', description: 'Nutrient-dense blue-green algae powder. Traditionally used to support general nutritional wellbeing.', price: 'KSh 1,450', availability: 'In Stock', featured: false, image: "https://img.rocket.new/generatedImages/rocket_gen_img_1f9a1b3ea-1772131894338.png", alt: 'Vibrant green spirulina powder in a wooden spoon surrounded by fresh green plants' },
-{ id: 'lavender-essential-oil', name: 'Organic Lavender Essential Oil', category: 'Wellness Products', description: 'Pure organic lavender essential oil. Traditionally used to support relaxation and a calming atmosphere.', price: 'KSh 1,150', availability: 'In Stock', featured: false, image: "https://img.rocket.new/generatedImages/rocket_gen_img_1eb19e721-1786266981685.png", alt: 'Small amber bottle of lavender essential oil surrounded by fresh purple lavender flowers' }];
-
-
-export default function ProductsContent() {
+export default function ProductsContent({ products }: ProductsContentProps) {
+  const categories = ['All', ...Array.from(new Set(products.map((product) => product.category)))];
   const [activeCategory, setActiveCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [visibleCount, setVisibleCount] = useState(8);
@@ -55,7 +33,7 @@ export default function ProductsContent() {
     return () => observer.disconnect();
   }, []);
 
-  const filtered = allProducts.filter((p) => {
+  const filtered = products.filter((p) => {
     const matchCat = activeCategory === 'All' || p.category === activeCategory;
     const matchSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     p.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -82,7 +60,7 @@ export default function ProductsContent() {
               <span className="text-primary">Product Catalogue</span>
             </h1>
             <p className="text-muted-foreground mt-4 leading-relaxed scroll-reveal scroll-reveal-delay-2">
-              Browse our carefully curated selection of organic foods, herbal teas, natural supplements, and wellness products. Enquire about any product via WhatsApp.
+              Browse our carefully curated seeds and nuts, cold-pressed and essential oils, dried fruits, kitchen spices, botanical herbs, plant and herbal extracts, and tailored herbal teas. Enquire about any product via WhatsApp.
             </p>
           </div>
         </div>
@@ -162,10 +140,19 @@ export default function ProductsContent() {
                 </div>
                 <div className="p-4 flex flex-col gap-2.5">
                   <span className="text-xs text-accent font-medium uppercase tracking-wide">{product.category}</span>
-                  <h2 className="font-serif font-semibold text-base text-card-foreground leading-snug">{product.name}</h2>
+                  <h2 className="font-serif font-semibold text-base text-card-foreground leading-snug">
+                    <Link href={`/products/${product.id}`} className="hover:text-primary transition-colors">
+                      {product.name}
+                    </Link>
+                  </h2>
                   <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">{product.description}</p>
                   <div className="flex items-center justify-between mt-1">
                     <span className="font-semibold text-primary">{product.price}</span>
+                    <Link
+                      href={`/products/${product.id}`}
+                      className="text-xs font-semibold text-primary underline underline-offset-2 hover:text-primary/70 transition-colors">
+                      View Details
+                    </Link>
                   </div>
                   <button
                 onClick={() => handleWhatsApp(product.name)}

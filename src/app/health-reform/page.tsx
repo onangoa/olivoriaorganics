@@ -5,7 +5,7 @@ import HealthReformContent from '@/app/health-reform/components/HealthReformCont
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Health Reform — OlivoriaOrganics',
+  title: 'Health Reform — Olivoria Organics',
   description: 'Explore the 8 foundational pillars of wholistic health reform: nutrition, exercise, water, sunlight, fresh air, rest, temperance, and spiritual wellbeing.',
 };
 

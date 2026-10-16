@@ -59,7 +59,7 @@ export default function IntroSection() {
 
             <div className="space-y-4 scroll-reveal scroll-reveal-delay-3">
               <p className="text-muted-foreground leading-relaxed">
-                OlivoriaOrganics was born from a deep conviction that true wellness is wholistic — embracing the physical, mental, emotional, social, and spiritual dimensions of health. We believe that God's original design for humanity includes vibrant health, and that returning to natural, whole foods and organic living is a meaningful step toward that design.
+                Olivoria Organics was born from a deep conviction that true wellness is wholistic — embracing the physical, mental, emotional, social, and spiritual dimensions of health. We believe that God's original design for humanity includes vibrant health, and that returning to natural, whole foods and organic living is a meaningful step toward that design.
               </p>
               <p className="text-muted-foreground leading-relaxed">
                 We exist to help individuals and families make healthier lifestyle choices through carefully selected organic products, practical health education, personalized consultations, and lifestyle guidance rooted in proven health reform principles.

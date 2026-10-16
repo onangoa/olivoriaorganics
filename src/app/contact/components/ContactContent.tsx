@@ -35,7 +35,7 @@ export default function ContactContent() {
   };
 
   const handleWhatsApp = () => {
-    const message = encodeURIComponent('Hello, I would like to get in touch with OlivoriaOrganics. Could you please assist me?');
+    const message = encodeURIComponent('Hello, I would like to get in touch with Olivoria Organics. Could you please assist me?');
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
   };
 
@@ -77,7 +77,7 @@ export default function ContactContent() {
             <div className="scroll-reveal scroll-reveal-delay-1 grid grid-cols-1 sm:grid-cols-2 gap-5">
               {[
                 { icon: '📞', label: 'Phone', value: '+254 708 261674', href: 'tel:+254708261674' },
-                { icon: '✉️', label: 'Email', value: 'hello@olivoriaorganics.co.ke', href: 'mailto:hello@olivoriaorganics.co.ke' },
+                { icon: '✉️', label: 'Email', value: 'hello@olivoriaorganics.com', href: 'mailto:hello@olivoriaorganics.com' },
                 { icon: '📍', label: 'Location', value: 'Matasia, along Kiserian–Matasia Road\nMoran Towers, Matasia', href: undefined },
                 { icon: '🕐', label: 'Hours', value: 'Mon–Thu: 9:00 AM – 7:30 PM\nFri: 9:00 AM – 3:00 PM\nSat: Closed\nSun: 9:00 AM – 6:30 PM', href: undefined },
               ].map((item) => (

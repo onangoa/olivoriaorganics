@@ -5,8 +5,8 @@ import AboutContent from '@/app/about/components/AboutContent';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About OlivoriaOrganics — Our Story, Mission & Values',
-  description: 'Learn about OlivoriaOrganics — our story, mission, wholistic approach to health, and the Christian/Adventist values that guide everything we do.',
+  title: 'About Olivoria Organics — Our Story, Mission & Values',
+  description: 'Learn about Olivoria Organics — our story, mission, wholistic approach to health, and the Christian/Adventist values that guide everything we do.',
 };
 
 export default function AboutPage() {

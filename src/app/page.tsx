@@ -7,6 +7,7 @@ import FeaturedProducts from '@/app/components/FeaturedProducts';
 import OurApproach from '@/app/components/OurApproach';
 import ConsultationsTeaser from '@/app/components/ConsultationsTeaser';
 import TestimonialsSection from '@/app/components/TestimonialsSection';
+import { getFeaturedProducts } from '@/lib/content';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -15,12 +16,14 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
+  const featuredProducts = getFeaturedProducts(6);
+
   return (
     <main className="min-h-screen bg-background">
       <Header />
       <HeroSection />
       <IntroSection />
-      <FeaturedProducts />
+      <FeaturedProducts products={featuredProducts} />
       <OurApproach />
       <ConsultationsTeaser />
       <TestimonialsSection />
