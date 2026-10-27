@@ -49,17 +49,22 @@ export default async function AdminInvoicesPage() {
   });
 
   const completed = invoices.filter((invoice) => invoice.status === 'completed');
-  const pending = invoices.filter((invoice) => invoice.status === 'pending');
-  const completedRevenue = completed.reduce(
-    (sum, invoice) => sum + invoice.sale.total.toNumber(),
-    0
-  );
-  const pendingAmount = pending.reduce((sum, invoice) => sum + invoice.sale.total.toNumber(), 0);
+  // Pending invoices are always prospect quotations — unconfirmed money, not owed.
+  const prospects = invoices.filter((invoice) => invoice.status === 'pending');
+  // Completed revenue splits into actual (paid in full) and on-credit sales.
+  const actualRevenue = completed
+    .filter((invoice) => invoice.sale.paymentStatus === 'paid')
+    .reduce((sum, invoice) => sum + invoice.sale.total.toNumber(), 0);
+  const creditRevenue = completed
+    .filter((invoice) => invoice.sale.paymentStatus === 'credit')
+    .reduce((sum, invoice) => sum + invoice.sale.total.toNumber(), 0);
+  const prospectValue = prospects.reduce((sum, invoice) => sum + invoice.sale.total.toNumber(), 0);
 
   const stats = [
-    { label: 'Completed Revenue', value: formatKES(completedRevenue) },
-    { label: 'Pending Invoices', value: String(pending.length) },
-    { label: 'Pending Amount', value: formatKES(pendingAmount) },
+    { label: 'Actual Revenue', value: formatKES(actualRevenue) },
+    { label: 'Credit Revenue', value: formatKES(creditRevenue) },
+    { label: 'Prospects', value: String(prospects.length) },
+    { label: 'Prospect Value', value: formatKES(prospectValue) },
   ];
 
   return (
@@ -73,7 +78,7 @@ export default async function AdminInvoicesPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-5 mb-10">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-5 mb-10">
         {stats.map((stat) => (
           <div key={stat.label}>
             <p className="font-serif text-2xl md:text-3xl font-semibold text-foreground">

@@ -45,6 +45,57 @@ let lineKey = 0;
 
 const round2 = (value: number) => Math.round((value + Number.EPSILON) * 100) / 100;
 
+let audioContext: AudioContext | null = null;
+
+function getAudioContext(): AudioContext | null {
+  if (typeof window === 'undefined') return null;
+  const win = window as Window & {
+    AudioContext?: typeof AudioContext;
+    webkitAudioContext?: typeof AudioContext;
+  };
+  const Ctor = win.AudioContext ?? win.webkitAudioContext;
+  if (!Ctor) return null;
+  let ctx = audioContext;
+  if (!ctx) {
+    ctx = new Ctor();
+    audioContext = ctx;
+  }
+  if (ctx.state === 'suspended') void ctx.resume();
+  return ctx;
+}
+
+function playTone(
+  ctx: AudioContext,
+  frequency: number,
+  startOffset: number,
+  duration: number,
+  volume = 0.05
+) {
+  const oscillator = ctx.createOscillator();
+  const gain = ctx.createGain();
+  oscillator.type = 'sine';
+  oscillator.frequency.value = frequency;
+  const startAt = ctx.currentTime + startOffset;
+  gain.gain.setValueAtTime(0, startAt);
+  gain.gain.linearRampToValueAtTime(volume, startAt + 0.01);
+  gain.gain.exponentialRampToValueAtTime(0.0001, startAt + duration);
+  oscillator.connect(gain).connect(ctx.destination);
+  oscillator.start(startAt);
+  oscillator.stop(startAt + duration + 0.05);
+}
+
+function playCartSound(kind: 'add' | 'remove') {
+  const ctx = getAudioContext();
+  if (!ctx) return;
+  if (kind === 'add') {
+    playTone(ctx, 880, 0, 0.09);
+    playTone(ctx, 1318.5, 0.07, 0.12);
+  } else {
+    playTone(ctx, 392, 0, 0.08);
+    playTone(ctx, 261.6, 0.06, 0.12);
+  }
+}
+
 interface SalesPosProps {
   products: PosProduct[];
 }
@@ -103,6 +154,7 @@ export default function SalesPos({ products }: SalesPosProps) {
   }, [cart, taxRate]);
 
   const addToCart = (productId: string, variant: PosVariant) => {
+    playCartSound('add');
     setCart((prev) => {
       const existing = prev.find(
         (line) => line.productId === productId && line.variantLabel === variant.label
@@ -131,6 +183,7 @@ export default function SalesPos({ products }: SalesPosProps) {
   };
 
   const removeLine = (key: number) => {
+    playCartSound('remove');
     setCart((prev) => prev.filter((line) => line.key !== key));
   };
 
