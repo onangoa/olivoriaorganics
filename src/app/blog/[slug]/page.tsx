@@ -10,13 +10,9 @@ interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
 }
 
-export function generateStaticParams() {
-  return getBlogPosts().map((post) => ({ slug: post.slug }));
-}
-
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlug(slug);
   if (!post) {
     return { title: 'Article Not Found — Olivoria Organics' };
   }
@@ -28,10 +24,10 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlug(slug);
   if (!post) notFound();
 
-  const relatedPosts = getBlogPosts().filter((p) => p.slug !== post.slug);
+  const relatedPosts = (await getBlogPosts()).filter((p) => p.slug !== post.slug);
 
   return (
     <main className="min-h-screen bg-background">

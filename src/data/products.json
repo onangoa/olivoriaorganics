@@ -10,10 +10,26 @@
     "IMAGES: to use a local image, save your photo in public/assets/images/products/ (e.g.",
     "public/assets/images/products/almonds.jpg) and set image to '/assets/images/products/almonds.jpg'.",
     "Until the image file is added, a placeholder is shown automatically.",
-    "Keep entries grouped by category. After editing, run 'npm run build' to publish."
+    "CATEGORIES: the 'categories' array below is the official list of product categories, shown in this order",
+    "on the Products page (empty categories display a 'Coming soon' state) and in the site footer.",
+    "When adding a product, set its category to one of these exact names.",
+    "NOTE: the live catalogue is stored in the database and managed from the admin dashboard (/admin/products).",
+    "This file is only used as seed data by 'npm run db:seed' (existing rows are never overwritten).",
+    "Keep entries grouped by category."
+  ],
+  "categories": [
+    "Seeds & Nuts",
+    "Cold-Pressed Oils & Essential Oils",
+    "Dried Fruits",
+    "Kitchen Spices",
+    "Botanical Herbs",
+    "Plant & Herbal Extracts",
+    "Tailored Herbal Teas & Extracts",
+    "Supplements",
+    "Wellness Essentials",
+    "Wellness Services"
   ],
   "products": [
-    
     {
       "id": "organic-almonds",
       "name": "Organic Almonds",
@@ -115,26 +131,69 @@
         "Baking — incorporate into your cakes and breads to boost the nutritional profile.",
         "Smoothies — add to your smoothies for nutritional richness."
       ],
-      "caution": "NB: Roasted cashew nuts are best eaten in moderation."
+      "caution": "NB: Roasted cashew nuts are best eaten in moderation.",
+      "stock": 108
     },
     {
       "id": "cold-pressed-coconut-oil",
-      "name": "Cold-Pressed Coconut Oil",
+      "name": "Cold-Pressed Virgin Coconut Oil",
       "category": "Cold-Pressed Oils & Essential Oils",
-      "description": "Unrefined, virgin coconut oil. Part of a healthy lifestyle for cooking and natural personal care. Rich in medium-chain fatty acids.",
-      "price": "KSh 1,500",
+      "description": "The multi-purpose miracle oil — pressed from fresh, mature Kenyan coconuts (not dried copra) and cold-pressed below 40°C. No heat, no chemicals, no bleaching. Rich in MCTs and lauric acid for cooking, hair, skin, baby care and oil pulling. One oil, 20 uses.",
+      "price": "KSh 1,500 (15ml)",
       "availability": "In Stock",
       "featured": true,
       "image": "/assets/no_image.png",
-      "alt": "Glass jar of coconut oil with fresh coconut on a white surface in bright natural light"
+      "alt": "Glass jar of white virgin coconut oil with a fresh cracked coconut on a natural surface in bright light",
+      "longDescription": "Pressed from fresh, mature Kenyan coconuts — not dried copra. Our cold-pressed virgin method means no heat, no chemicals, no bleaching. Just pure white oil that smells like fresh coconut and melts the moment it touches your skin. It solidifies when cool (white butter) and turns liquid when warm (clear oil) — both states are 100% normal and pure; that melting behaviour is proof it is virgin, not refined. Unlike other oils that need to be broken down in the liver, the MCTs in coconut oil go straight to your cells for quick energy — and to your skin and hair for instant absorption. On skin and hair, its small molecular structure penetrates deep into the hair shaft and skin barrier rather than just sitting on top. From Coast to Skin. One oil, for the whole family.",
+      "highlights": [
+        "Rich in Medium Chain Triglycerides (MCTs) — especially Lauric Acid (50%+) — the same immune-supporting fat found in breast milk.",
+        "Naturally antibacterial, antifungal and antiviral — lauric acid fights the fungus that causes dandruff and supports the body's natural defences.",
+        "Plus Vitamin E, Vitamin K and natural antioxidants that help with fine lines and keep skin supple.",
+        "Kenya's #1 hair oil — penetrates inside the hair shaft to stop protein loss, reducing breakage, split ends and dryness.",
+        "A natural lotion for brown skin — instant soft, glowing skin with a beautiful non-greasy sheen, and a gentle, chemical-free baby massage oil.",
+        "Edible-grade — great for frying, baking, chapati, mandazi, bulletproof coffee and Ayurvedic oil pulling.",
+        "Made from fresh, mature coconuts from coastal Kenya — cold-pressed below 40°C in small batches; never refined, bleached or deodorized. One oil, 20 uses."
+      ],
+      "nutritionNote": "What's inside and how it works:",
+      "nutrition": [
+        "Medium Chain Triglycerides (MCTs) — skip the liver and go straight to your cells for quick, clean energy; on skin and hair they absorb instantly instead of sitting on top.",
+        "Lauric Acid (50%+) — naturally antibacterial, antifungal and antiviral; on the scalp it fights the fungus behind dandruff and itching.",
+        "Vitamin E + natural antioxidants — support anti-aging, supple skin and everyday cellular protection.",
+        "Small molecular structure — penetrates deep into the hair shaft and skin barrier, which is why it repairs rather than just coats."
+      ],
+      "benefits": [
+        "Deep hair moisturizer — penetrates inside the hair shaft to stop protein loss; reduces breakage, split ends and dryness.",
+        "Hair growth & thickness — massaging into the scalp improves circulation and keeps follicles healthy.",
+        "Dandruff & itchy scalp — lauric acid fights the fungus that causes dandruff and itching.",
+        "Natural heat protectant & detangler — smooths the cuticle, makes combing easy and adds real shine; keeps braids soft and scalps moisturized.",
+        "Daily body butter — instant soft, glowing skin for dry elbows, knees, feet and ashy skin.",
+        "Soothes irritation — calms rashes, sunburn, insect bites and eczema-prone skin.",
+        "Anti-aging — Vitamin E and antioxidants help with fine lines and keep skin supple.",
+        "Makeup remover — melts makeup and waterproof mascara gently, even around the eyes.",
+        "After shave — prevents bumps and soothes shaved legs, underarms and beard.",
+        "Baby care — a gentle, chemical-free massage oil for baby's skin and cradle cap, plus a protective diaper balm.",
+        "Cracked heels & lips — heals dry lips, cracked heels and cuticles overnight.",
+        "Oil pulling — a teaspoon swished for 5-10 minutes supports fresh breath, whiter teeth and gum health (Ayurvedic practice).",
+        "Cooking — a high-smoke-point virgin oil for frying, baking and bulletproof coffee; 1-2 tablespoons a day gives quick, clean MCT energy."
+      ],
+      "usage": [
+        "As scalp oil — melt a small amount between palms, massage into the scalp 3x a week, leave for 2 hours or overnight, then wash. For growth, mix with Olivoria Rosemary & Castor Oil.",
+        "As hair mask — apply generously from root to tip on dry hair, cover with a cap for 1 hour, then shampoo. Repairs bleached and heat-damaged hair.",
+        "As daily sealer — a tiny amount on the ends to seal in moisture and stop breakage.",
+        "As lotion — use on damp skin right after a shower to lock in moisture best; a little goes a long way.",
+        "As face oil (dry skin only) — a pea-sized amount at night. If you are acne-prone or oily, use on the body, not the face, or mix with jojoba.",
+        "For lips & heels — apply a thick layer before sleep.",
+        "Oil pulling — on an empty stomach, 1 teaspoon, swish gently (don't gargle) for 5-10 minutes, spit into the trash (not the sink), then rinse.",
+        "For cooking — use 1:1 to replace vegetable oil; great for chapati, mandazi, frying and bulletproof coffee."
+      ],
+      "caution": "100% natural, but do a patch test first. If you are very acne-prone, avoid heavy use on the face — it can clog pores for some. For cooking, 1-2 tablespoons a day is enough. Storage: keeps 2 years — it will solidify below 24°C and melt above; both states are 100% pure. Keep the lid tight; no need to refrigerate. Real virgin coconut oil smells and tastes like fresh coconut, turns solid white when cold and clear when warm, and melts instantly on the skin."
     },
-    
     {
       "id": "eucalyptus-essential-oil",
       "name": "Eucalyptus Essential Oil",
       "category": "Cold-Pressed Oils & Essential Oils",
       "description": "Steam-distilled from Eucalyptus globulus leaves — a distinct, invigorating aroma traditionally used to support clear breathing, relaxation, and everyday wellbeing.",
-      "price": "KSh 1,000",
+      "price": "KSh 350 (15ml) / KSh 600 (30ml)",
       "availability": "In Stock",
       "featured": true,
       "image": "/assets/images/products/peppermint-essential-oil.png",
@@ -165,7 +224,7 @@
       "name": "Peppermint Essential Oil",
       "category": "Cold-Pressed Oils & Essential Oils",
       "description": "Steam-distilled from Mentha × piperita leaves and flowering tops — high menthol content gives an intense cooling sensation and wide versatility for everyday wellness.",
-      "price": "KSh 1,100",
+      "price": "KSh 350 (15ml) / KSh 600 (30ml)",
       "availability": "In Stock",
       "featured": true,
       "image": "/assets/images/products/peppermint-essential-oil.png",
@@ -195,7 +254,7 @@
       "name": "Lemongrass Essential Oil",
       "category": "Cold-Pressed Oils & Essential Oils",
       "description": "Steam-distilled from Cymbopogon citratus leaves and stalks — a powerful citrus aroma traditionally used in aromatherapy to relieve stress and anxiety, with digestive and household uses.",
-      "price": "KSh 950",
+      "price": "KSh 400 (15ml) / KSh 800 (30ml)",
       "availability": "In Stock",
       "featured": false,
       "image": "/assets/images/products/peppermint-essential-oil.png",
@@ -224,7 +283,7 @@
       "name": "Oregano Essential Oil",
       "category": "Cold-Pressed Oils & Essential Oils",
       "description": "Steam-distilled from Origanum vulgare leaves — one of the most powerful antioxidant essential oils, rich in carvacrol and thymol, traditionally used to support immunity and digestion.",
-      "price": "KSh 1,250",
+      "price": "KSh 400 (15ml) / KSh 800 (30ml)",
       "availability": "In Stock",
       "featured": false,
       "image": "/assets/images/products/peppermint-essential-oil.png",
@@ -247,7 +306,616 @@
         "Topically — mix with a carrier oil for skin applications.",
         "Aromatherapy — inhale for respiratory relief."
       ]
+    },
+    {
+      "id": "wintergreen-essential-oil",
+      "name": "Wintergreen Essential Oil",
+      "category": "Cold-Pressed Oils & Essential Oils",
+      "description": "Steam-distilled from Gaultheria procumbens leaves — a sweet, minty aroma naturally rich in methyl salicylate, traditionally used in diluted massage blends for warming relief of tired muscles and joints.",
+      "price": "KSh 350 (15ml) / KSh 600 (30ml)",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Bottle of wintergreen essential oil with fresh wintergreen leaves on a natural surface",
+      "longDescription": "Wintergreen essential oil is derived from the leaves of Gaultheria procumbens through a steam distillation process. It is naturally rich in methyl salicylate — the plant-derived compound that gives the oil its sweet, minty aroma and its traditional warming, soothing reputation. From massage blends for tired muscles and joints to aromatherapy for a refreshing, grounding atmosphere, it is a valued part of the natural wellness cabinet.",
+      "nutrition": [
+        "Rich in methyl salicylate — the characteristic active compound of wintergreen oil."
+      ],
+      "benefits": [
+        "Warming muscle relief — traditionally used in diluted massage blends to soothe tired, overworked muscles and joints after physical activity.",
+        "Tension relief — its cooling-warming sensation, when well diluted and applied to the temples or neck, can help ease feelings of tightness and pressure.",
+        "Comforting aroma — the sweet, minty scent is used in aromatherapy to create a calming, grounded environment.",
+        "Natural household freshener — commonly added to natural cleaning blends for a crisp, clean scent."
+      ],
+      "usage": [
+        "Massage therapy — dilute with a carrier oil and massage into tired muscles and joints for a warming, soothing effect.",
+        "Aromatherapy — diffuse for a short time to enjoy its sweet, refreshing aroma.",
+        "Bath soak — add a few drops to a carrier oil before mixing into warm bath water for a comforting soak.",
+        "Topical application — always dilute with a carrier oil before applying to the skin. Perform a patch test before full application."
+      ],
+      "caution": "For external use only. Wintergreen oil is naturally high in methyl salicylate and must always be well diluted before skin contact. Keep away from children, and avoid use if pregnant, nursing, or taking blood-thinning medication. Never ingest."
+    },
+    {
+      "id": "lavender-essential-oil",
+      "name": "Lavender Essential Oil",
+      "category": "Cold-Pressed Oils & Essential Oils",
+      "description": "Steam-distilled from Lavandula angustifolia flowers — a gentle, floral aroma traditionally cherished for relaxation, restful sleep, and everyday skin soothing. One of the most versatile essential oils.",
+      "price": "KSh 400 (15ml) / KSh 800 (30ml)",
+      "availability": "In Stock",
+      "featured": true,
+      "image": "/assets/no_image.png",
+      "alt": "Bottle of lavender essential oil with fresh lavender flowers on a natural surface",
+      "longDescription": "Lavender essential oil is derived from the flowers of Lavandula angustifolia through a steam distillation process. Prized for centuries for its gentle, floral aroma, it is often described as the most versatile of all essential oils — equally at home in aromatherapy for relaxation and restful sleep, in diluted skin care for everyday soothing, and in massage blends for unwinding at the end of a long day.",
+      "nutrition": [
+        "Rich in linalool and linalyl acetate — the compounds behind its gentle, floral aroma and calming reputation."
+      ],
+      "benefits": [
+        "Relaxation & restful sleep — widely used in aromatherapy to calm the mind, ease feelings of stress, and support a peaceful night's rest.",
+        "Everyday skin soothing — when well diluted, traditionally applied to soothe minor skin irritation, insect bites, and small blemishes.",
+        "Tension relief — the soothing aroma helps ease headaches and feelings of tightness when massaged (diluted) into the temples and neck.",
+        "Gentle on most skin types — one of the few essential oils traditionally tolerated in careful dilution by sensitive skin."
+      ],
+      "usage": [
+        "Aromatherapy — diffuse in the evening or add a drop to your pillow to unwind and prepare for restful sleep.",
+        "Topical application — dilute with a carrier oil and apply to the temples, neck, or irritated skin as needed. Perform a patch test before full application.",
+        "Bath soak — mix a few drops into a carrier oil or bath base and add to warm water for a calming soak.",
+        "Massage therapy — blend with a carrier oil for a relaxing full-body or shoulder massage."
+      ],
+      "caution": "For external use only. Always dilute with a carrier oil before applying to the skin. Avoid contact with eyes and broken skin."
+    },
+    {
+      "id": "clove-essential-oil",
+      "name": "Clove Essential Oil",
+      "category": "Cold-Pressed Oils & Essential Oils",
+      "description": "Steam-distilled from Syzygium aromaticum buds — a warm, spicy aroma rich in eugenol, traditionally used for dental comfort, immune support, and as a hardworking natural antimicrobial.",
+      "price": "KSh 400 (15ml) / KSh 800 (30ml)",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Bottle of clove essential oil with whole cloves on a natural surface",
+      "longDescription": "Clove essential oil is derived from the dried flower buds of Syzygium aromaticum through a steam distillation process. Its warm, spicy aroma comes from its high eugenol content — a compound that has made clove oil a staple of traditional wellness practice for centuries, from dental comfort and seasonal immune support to natural home care and insect deterrence.",
+      "nutrition": [
+        "Rich in eugenol — the dominant active compound behind clove oil's warm aroma and traditional uses."
+      ],
+      "benefits": [
+        "Dental comfort — traditionally applied (well diluted) to soothe toothache and gum discomfort; a classic ingredient in natural oral care.",
+        "Powerful antimicrobial — traditionally used against bacteria and fungi in natural home cleaning and personal care.",
+        "Immune support — its high antioxidant activity makes it a favourite in seasonal wellness routines.",
+        "Digestive comfort — a traditional remedy for occasional bloating and digestive sluggishness when used appropriately.",
+        "Natural insect repellent — its warm, spicy scent helps deter insects around the home."
+      ],
+      "usage": [
+        "Oral comfort — dab a single diluted drop onto the affected gum or tooth area using a cotton swab; never apply undiluted.",
+        "Aromatherapy — diffuse in short bursts for a warm, grounding atmosphere.",
+        "Topical application — dilute with a carrier oil and apply to affected areas; perform a patch test first.",
+        "Home care — add a few drops to natural cleaning blends for its antimicrobial power and warm scent."
+      ],
+      "caution": "For external use only. Clove oil is very concentrated and can irritate skin and mucous membranes — always dilute well and keep away from children. Avoid use if pregnant or nursing without professional guidance."
+    },
+    {
+      "id": "cinnamon-essential-oil",
+      "name": "Cinnamon Essential Oil",
+      "category": "Cold-Pressed Oils & Essential Oils",
+      "description": "Steam-distilled from Cinnamomum verum bark — a sweet, warming spice aroma traditionally used to energise the mind, support digestion, and freshen the home naturally.",
+      "price": "KSh 400 (15ml) / KSh 800 (30ml)",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Bottle of cinnamon essential oil with cinnamon sticks on a natural surface",
+      "longDescription": "Cinnamon essential oil is derived from the bark of Cinnamomum verum through a steam distillation process. Its sweet, warming aroma — driven by its natural cinnamaldehyde content — has made it a treasured spice and wellness ally for centuries. From energising aromatherapy and digestive comfort to natural home freshening and seasonal immune support, it brings warmth to any natural wellness routine.",
+      "nutrition": [
+        "Rich in cinnamaldehyde — the compound responsible for its sweet, warming aroma and traditional benefits."
+      ],
+      "benefits": [
+        "Mental invigoration — its warm, spicy scent is used in aromatherapy to energise the mind and combat feelings of fatigue.",
+        "Digestive comfort — a traditional remedy for slow digestion, bloating, and queasiness.",
+        "Antimicrobial — traditionally used against bacteria and fungi in natural home care and cleaning blends.",
+        "Seasonal immune support — a favourite in diffuser blends during the cold season.",
+        "Natural home freshener — a few drops impart a warm, welcoming scent to any room."
+      ],
+      "usage": [
+        "Aromatherapy — diffuse in short bursts for a warm, energising atmosphere.",
+        "Topical application — always dilute heavily with a carrier oil before applying to the skin; perform a patch test first.",
+        "Home care — add to natural cleaning blends or a bowl of warm water for a warm, spicy home scent.",
+        "Massage therapy — blend sparingly with a carrier oil for an invigorating warming massage."
+      ],
+      "caution": "For external use only. Cinnamon bark oil is a 'hot' oil and can irritate skin and mucous membranes — always dilute heavily and avoid contact with eyes and sensitive areas. Not recommended for young children."
+    },
+    {
+      "id": "frankincense-essential-oil",
+      "name": "Frankincense Essential Oil",
+      "category": "Cold-Pressed Oils & Essential Oils",
+      "description": "Steam-distilled from sun-dried Boswellia resin tears - a warm, woody, spicy, slightly citrusy aroma that is both grounding and uplifting. Rich in alpha-pinene and boswellic acids, it works on three levels: skin, mind and body.",
+      "price": "KSh 400 (15ml) / KSh 2,500 (30ml)",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Bottle of frankincense essential oil with frankincense resin tears on a natural surface",
+      "longDescription": "Our Frankincense essential oil is steam-distilled from the sun-dried resin tears of the Boswellia tree, giving it a warm, woody, spicy, slightly citrusy aroma that is both grounding and uplifting. Frankincense is rich in alpha-pinene and boswellic acids - natural compounds that work on three levels. For the skin, it is astringent and regenerative: it helps tighten skin tissue, reduce the appearance of fine lines, and supports wound healing by speeding up skin cell turnover. For the mind, the aroma directly stimulates the limbic system - your emotional brain - lowering cortisol, slowing over-breathing, and creating a feeling of calm, focus and spiritual grounding; that is why it has been used for centuries for meditation and anxiety. For the body, boswellic acids are known to support a healthy inflammatory response, helping soothe joints, muscles and irritated airways.",
+      "highlights": [
+        "Wild-Harvested & 100% Pure - steam-distilled straight from the resin tears with no fillers and no fragrance.",
+        "Batch-Tested for Purity - we test every batch; what you smell is straight from the resin tear.",
+        "Skin, Mind & Body in One Oil - astringent and regenerative for the skin, grounding for the mind, and soothing for joints and muscles.",
+        "A Classic Meditation Oil - used for centuries to clear mental fog, deepen breathing and support prayer and meditation."
+      ],
+      "nutritionNote": "Pure Boswellia profile:",
+      "nutrition": [
+        "Botanical name: Boswellia carterii / sacra / serrata",
+        "Method: Steam distillation of resin",
+        "Scent: Deep, resinous, warm wood with lemon-pepper top notes",
+        "Rich in alpha-pinene and boswellic acids - natural compounds acting on skin, mind and body"
+      ],
+      "benefits": [
+        "Anti-aging - helps reduce the appearance of wrinkles, fine lines and sagging by toning and lifting.",
+        "Scar & blemish support - fades the appearance of scars, stretch marks and dark spots.",
+        "Natural glow - controls oily skin, tightens pores and promotes an even tone.",
+        "Deep calm & anti-anxiety - one of the best oils for stress, racing thoughts and panic; instantly grounding.",
+        "Meditation & focus - clears mental fog, improves focus and deepens breathing for prayer and meditation.",
+        "Sleep support - helps quiet the mind for deeper, more restful sleep.",
+        "Immune support - traditionally diffused during the cold season to purify the air and support immune defence.",
+        "Respiratory support - opens airways, loosens mucus and eases chest tightness when inhaled.",
+        "Joint & muscle soothing - warming anti-inflammatory relief when massaged onto stiff joints, back pain and sore muscles.",
+        "Hormonal balance - traditionally used to support women's cycle comfort and mood during PMS and menopause."
+      ],
+      "usage": [
+        "Diffusion (calm, focus, air purifying) - add 4-6 drops to a diffuser with water. Perfect for morning meditation, work stress, prayer, or evening wind-down. Blend with lavender for sleep or orange for uplifting.",
+        "Topical for the face - 2 drops of Frankincense in 1 teaspoon of jojoba or rosehip oil; dab on fine lines, scars and under the eyes at night. Always dilute - never use neat on skin.",
+        "Topical for body & joints - 5-6 drops in 1 tablespoon of carrier oil (coconut, sweet almond or castor); massage onto sore knees, back or stiff neck.",
+        "For stretch marks & scars - mix with Olivoria Shea Butter.",
+        "Inhalation (stress & breathing) - add 2 drops to a bowl of hot water, cover your head with a towel and inhale for 2 minutes; or put 1 drop on your palms, rub, cup over your nose and breathe deeply three times.",
+        "Bath - mix 5 drops with 1 tablespoon of carrier oil first, then add to a warm bath for full-body relaxation.",
+        "Natural home uses - add 3 drops to your floor cleaner, 2 drops to unscented lotion for a natural perfume, or blend with myrrh for other therapeutic management."
+      ],
+      "caution": "External use only. Do not ingest unless under clinical aromatherapist supervision. Always dilute - it can cause skin irritation if undiluted. Avoid during the first trimester of pregnancy - consult a healthcare professional. Keep away from eyes and mucous membranes, and out of reach of children. Do a patch test first. If you have epilepsy or asthma, or are on blood thinners, consult your doctor. Use 100% pure Boswellia oil only - many cheap versions are diluted with chemicals."
+    },
+    {
+      "id": "oral-gut-cleanser",
+      "name": "Oral Gut Cleanser",
+      "category": "Tailored Herbal Teas & Extracts",
+      "description": "A classical 7-in-1 herbal cleanser and detox blend for the gastrointestinal system - Senna, Psyllium Husk, Flaxseeds, Bentonite Clay, Activated Charcoal, Ginger and White Oak Bark working together to relieve constipation from five angles at once: stimulating, bulking, lubricating, binding toxins, and toning the bowel.",
+      "price": "KSh 650",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Jar of herbal gut cleanser powder with senna leaves, psyllium husk and flaxseeds on a natural surface",
+      "longDescription": "This is a classical herbal cleanser and detox blend for the gastrointestinal system - it works to relieve constipation by attacking it from five different angles at once: stimulating, bulking, lubricating, binding toxins, and toning the bowel. Senna pushes, Psyllium and Flax bulk and soften, Flax lubricates, Bentonite Clay and Activated Charcoal clean up gas and debris, Ginger calms cramps and nausea, and White Oak Bark tones and protects. It is a complete colon reset in one glass - formulated so you go comfortably, completely, and cleanly, then your gut is restored. Most laxatives only force you to go; Olivoria helps you go comfortably, completely, and cleanly - then restores your gut.",
+      "highlights": [
+        "It Doesn't Just Push - It Softens, Lubricates & Cleans - Senna gently pushes, while Psyllium and Flaxseed create soft, bulky, lubricated stool that slides out easily. No straining, no pellet stools.",
+        "No Cramping, No Nausea - Thanks to Ginger - organic Ginger Root relaxes intestinal spasms, calms nausea, and warms up sluggish digestion. Smooth, comfortable release - not emergency runs.",
+        "Debloats While It Cleanses - constipation traps gas and toxins. Our dual detox binders - Bentonite Clay and Activated Charcoal - sweep old waste from colon walls and soak up gas and bloat as they go. You feel lighter, flatter, and less gassy - not just emptied.",
+        "It Tones, Not Weakens, Your Bowel - stimulant laxatives can leave your bowel stretched and weak. White Oak Bark - rich in natural tannins - tightens, tones, and strengthens bowel tissue after cleansing, helping restore natural regularity and soothing straining.",
+        "100% Plant-Based, Nothing Fake - seven organic, ethically sourced herbs only: Senna, Psyllium Husk, Flaxseeds, Bentonite, Activated Charcoal, Ginger, and White Oak. No senna overdose, no artificial flavours, sugar, or preservatives. Vegan, gluten-free, non-GMO, cruelty-free. Lab-tested for purity.",
+        "A Reset, Not A Dependency - formulated as a 7-14 day gentle colon reset, not a daily crutch. It is designed to break the cycle of constipation, cleanse buildup, and help your body remember how to go on its own - when combined with water and fibre."
+      ],
+      "nutritionNote": "The 7-in-1 formula - how each herb works in the mix:",
+      "nutrition": [
+        "Senna (The Stimulator) - the active laxative driver. Its sennosides irritate the lining of the colon just enough to trigger strong peristalsis - the wave-like muscle contractions that push stool forward. A stimulant laxative that forces the bowel to move; works in 6-12 hours.",
+        "Psyllium Husk (The Bulker) - a soluble fibre that is the backbone of the formula. It absorbs 10-20x its weight in water and swells into a soft, gelatinous bulk that stretches the colon wall - signalling your brain to have a bowel movement - and makes stool soft, large, and easy to pass instead of hard pellets.",
+        "Flaxseeds (The Lubricator + Softener) - fibre-rich with extra oil. Flax provides soluble fibre for more soft bulk, insoluble fibre, plus mucilage and omega-3 oil that coat and lubricate the intestinal lining, helping stool slide through and preventing the scraping and straining that senna alone can cause.",
+        "Bentonite Clay (The Sweeper / Detoxifier) - volcanic clay with a strong negative electrical charge. As it moves through, it acts like a sponge magnet - binding positively charged toxins, excess bacteria, and old waste debris stuck to the colon wall - and swells slightly to help sweep the colon. It also helps firm up overly loose stools that senna can cause.",
+        "Activated Charcoal (The Gas & Bloat Binder) - highly porous carbon with millions of tiny pores. It doesn't make you go, but it adsorbs gas, toxins, and byproducts of slow digestion that build up when you are constipated - reducing bloating, cramping, and foul-smelling gas, and helping prevent re-absorption of toxins.",
+        "White Oak Bark (The Toner / Astringent) - the balancing ingredient most blends forget. Rich in tannins, this astringent gently tightens and tones bowel tissue after it has been stretched and stimulated. Traditionally used to strengthen loose bowel tone, reduce minor inflammation, and soothe haemorrhoids from straining - preventing the 'dependency' feeling of weak bowels after stimulant use.",
+        "Ginger Root (The Calmer) - relaxes intestinal spasms, calms nausea and queasiness, and warms up sluggish digestion so the push isn't painful."
+      ],
+      "benefits": [
+        "Relief that feels natural, not forced.",
+        "Complete emptying without painful cramping.",
+        "Less bloat and gas after cleansing.",
+        "A formula that respects your gut long-term.",
+        "Hydrate & Build - Psyllium + Flax + water swell to create large, soft stool.",
+        "Push - Senna tells your colon 'time to move now'.",
+        "Smooth & Calm - Ginger stops cramps and nausea and lubricates the path so the push isn't painful.",
+        "Clean & De-Bloat - Bentonite sweeps old debris off the walls while charcoal soaks up all the trapped gas and toxins.",
+        "Tone & Seal - White Oak tightens and restores strength to the bowel tissue."
+      ],
+      "usage": [
+        "Add 1 tablespoon of the Oral Gut Cleanser into a glass of hot water, stir, and let it settle for 10 minutes.",
+        "Stir once more without sieving and drink.",
+        "Take as part of a 7-14 day gentle colon reset - this is a strong, short-term cleanse blend, not a daily fibre.",
+        "Combine with plenty of water and fibre so your body remembers how to go on its own."
+      ],
+      "caution": "This is a strong, short-term cleanse blend, not a daily fibre. Storage & Care: store in a cool, dry place away from direct sunlight, heat and moisture. Keep the container tightly sealed when not in use."
+    },
+    {
+      "id": "hormonal-changease",
+      "name": "Hormonal Changease",
+      "category": "Tailored Herbal Teas & Extracts",
+      "description": "A classic women's hormonal balance blend of Chaste Tree Berry, Black Cohosh, Wild Yam, Lady's Mantle and Ginseng - often used for PMS, cycle irregularity, and perimenopause and menopause transitions. It supports the body from five angles: signalling hormones, calming hot flashes, toning the uterus, and supporting mood and energy.",
+      "price": "KSh 650",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Jar of women's hormonal balance herbal blend with dried herbs and flowers on a natural surface",
+      "longDescription": "This is a classic women's hormonal balance blend - often used for PMS, cycle irregularity, and perimenopause and menopause transitions. It contains major cardinal herbs which work by supporting the body from five different angles: signalling hormones, calming hot flashes, toning the uterus, and supporting mood and energy. It does not replace your hormones - it helps your own system find balance again. Vitex regulates the signal, Black Cohosh cools the heat, Wild Yam eases cramps, Lady's Mantle tones and firms, and Ginseng restores energy. Women's hormonal changes are not one problem - they are many at once: hot flashes, mood swings, cycle irregularity, cramps, fatigue, sleepless nights. One herb can't fix that. Changease was formulated as a complete 5-in-1 support system, not a quick fix.",
+      "highlights": [
+        "It Balances The Signal, Not Just The Symptom - Chaste Tree (Vitex) works with your pituitary gland - your hormone control centre - to help your body produce a healthier estrogen-progesterone balance. This is key for PMS irritability, irregular cycles, and perimenopausal mood swings. It helps your body find its rhythm again.",
+        "Cools The Heat Without Added Hormones - Black Cohosh is traditionally used for perimenopause and menopause to help reduce the frequency of hot flashes, night sweats, and nighttime restlessness. It contains no estrogen itself, but helps support your brain's temperature regulation - so you can feel cooler, sleep deeper, and feel more like yourself.",
+        "Eases Cramps + Supports Uterine Tone - Wild Yam, known as 'colic root', helps relax uterine smooth muscle to ease monthly cramping and pelvic tension, while Lady's Mantle - Europe's 'women's protector' - is rich in natural tannins that gently tone and strengthen uterine tissue, traditionally used for heavy flow comfort and post-period recovery. Together they provide comfort during bleeding AND strength after.",
+        "Restores The Energy That Hormonal Shifts Steal - when hormones fluctuate, your adrenals have to work harder, leaving you tired, foggy and flat. Panax Ginseng, a true adaptogen, helps your body adapt to stress and supports natural energy, mental clarity, and resilience. So you don't just feel less hormonal - you feel more energetic and focused.",
+        "100% Women-Centered, Clean Formulation - five organic, traditionally-used herbs only: Wild Yam, Lady's Mantle, Chaste Tree Berry, Ginseng, and Black Cohosh. No synthetic hormones, no soy isoflavones, no artificial additives, no sugar. Vegan, gluten-free, non-GMO, cruelty-free. Lab-tested for purity and potency. Made in Kenya, formulated for African women's real needs."
+      ],
+      "nutritionNote": "The five cardinal herbs - how each one works:",
+      "nutrition": [
+        "Chaste Tree Berry (Vitex agnus-castus) - The Master Regulator - the core of the blend. Vitex works on the pituitary gland in the brain - the control tower for hormones - helping balance the ratio of estrogen to progesterone by supporting healthy progesterone production. When progesterone is low (common in PMS, irregular cycles, and perimenopause), you get mood swings, breast tenderness, spotting, and heavy cramps. By helping the body release more luteinizing hormone (LH), Vitex helps your own cycle produce more balanced progesterone. Most women notice it helps with cycle regularity, PMS irritability, and cyclical breast discomfort over 2-3 cycles.",
+        "Black Cohosh - The Hot Flash & Night Sweat Soother - the most researched herb for perimenopause, traditionally used by Native American women. It does not contain estrogen, but it acts on serotonin and temperature regulation centres in the brain, helping reduce the frequency and intensity of hot flashes, night sweats, and feeling overheated, and helping with the sleep disturbance and mood swings that come with fluctuating estrogen in menopause. It works best when hormones are fluctuating and falling, not when they are stable.",
+        "Wild Yam - The Comfort & Cramp Support - contains diosgenin, and was traditionally called 'colic root'. Valued not because it turns into hormones in the body (it doesn't directly), but because it helps relax smooth muscle - including the uterus - easing uterine cramping, pelvic tension, and low back discomfort linked to PMS and periods, and providing a sense of hormonal nourishment.",
+        "Lady's Mantle (Alchemilla vulgaris) - The Uterine Toner - known as the 'woman's protector' in European herbalism. Rich in tannins, it is a strong astringent and uterine tonic that helps tone and tighten the uterine lining and surrounding tissue. Traditionally used for heavy periods, spotting between cycles, and to support uterine strength after periods - the restorative herb after bleeding.",
+        "Ginseng (Panax or Siberian) - The Energy & Mood Lifter - an adaptogen that helps your adrenal glands handle stress. During hormonal changes, your adrenals have to pick up some hormone work. Ginseng supports adrenal energy, mental clarity, resistance to fatigue, and stable mood - countering the brain fog, low motivation, and exhaustion of PMS and menopause, and traditionally supporting healthy libido."
+      ],
+      "benefits": [
+        "More regular, comfortable cycles.",
+        "Less PMS moodiness and breast tenderness.",
+        "Fewer hot flashes and night sweats.",
+        "Less cramping and heavy flow discomfort.",
+        "More calm energy, better sleep, and clearer focus during perimenopause.",
+        "For cycling women (PMS / irregular cycles) - Vitex + Lady's Mantle help with regularity and heavy flow, Wild Yam helps with cramp comfort, Ginseng helps with mood and fatigue.",
+        "For perimenopause / menopause - Black Cohosh helps with heat and sleep, Vitex helps with mood swings from hormone fluctuations, Ginseng helps with energy dips, Lady's Mantle helps with tissue tone as estrogen declines."
+      ],
+      "usage": [
+        "A support system, not a quick fix - give it 2-3 cycles; most women notice the difference over that time.",
+        "For cycling women (PMS / irregular cycles) - take daily through the cycle to support hormone signalling, uterine tone, cramp comfort and mood.",
+        "For perimenopause / menopause - take daily to help cool hot flashes, ease night sweats, steady mood and restore energy.",
+        "Combine with good sleep, movement and stress care - your adrenals do part of your hormone work during transitions."
+      ],
+      "caution": "Important safety information - consult your healthcare professional first if you are pregnant, breastfeeding, trying to conceive, or have a history of hormone-sensitive conditions (fibroids, endometriosis, breast/ovarian/uterine history); if you are on hormonal birth control, HRT, fertility treatments, or thyroid medication (Vitex and Black Cohosh can interact with hormone therapies); if you have liver conditions (Black Cohosh should be used cautiously); or if you take blood thinners or blood pressure medication (Ginseng can interact). This product is a traditional herbal dietary supplement to support women's wellness. It is not intended to diagnose, treat, cure or prevent any disease."
+    },
+    {
+      "id": "cold-pressed-baobab-seed-oil",
+      "name": "Cold-Pressed Baobab Seed Oil",
+      "category": "Cold-Pressed Oils & Essential Oils",
+      "description": "\"Africa's Gold\" — golden-yellow, light, slightly nutty and fast-absorbing oil cold-pressed below 40°C from wild-harvested Kenyan baobab seeds. A rare 1:1 omega 3 & 6 ratio plus vitamins A, D, E & F repairs the skin barrier without clogging pores — safe pure on face, body, hair and baby.",
+      "price": "KSh 650 (125ml)",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Glass bottle of golden cold-pressed baobab seed oil with baobab fruit and seeds on a natural surface",
+      "longDescription": "Pressed from the seeds inside the fruit of Africa's ancient Baobab tree (Adansonia digitata) — the giant upside-down tree that lives for 2000 years in Kenya, Tanzania, and across the savannah. Golden-yellow, light, slightly nutty, fast-absorbing. Not greasy. Cold-pressed below 40°C so the life stays inside. The oil is called \"Africa's Gold\" for a reason: baobab oil has one of the best fatty acid profiles of any oil on earth — it mimics your own skin's natural sebum, moisturising deeply while staying non-comedogenic. Olivoria's baobab is 100% pure, virgin, cold-pressed below 40°C from Kenyan wild-harvested baobab seeds — unrefined, unfiltered, small-batch pressed with women groups. No hexane, no bleach, no fragrance. Light golden, fast-absorbing — the true Tree of Life oil.",
+      "highlights": [
+        "Omega 3, 6 & 9 (Balanced Perfectly) — a rare 1:1 ratio that repairs the skin barrier.",
+        "Vitamins A, D, E & F — the youth vitamins that soften skin and restore glow.",
+        "Phytosterols — calm redness and help eczema-prone skin.",
+        "High Linoleic Acid — non-clogging; perfect for oily and acne-prone brown skin (rated 2 on the comedogenic scale).",
+        "Mimics your skin's own sebum — one of the best fatty acid profiles of any oil on earth.",
+        "100% pure, virgin, cold-pressed below 40°C from Kenyan wild-harvested seeds — unrefined, unfiltered, small-batch pressed with women groups. No hexane, no bleach, no fragrance."
+      ],
+      "nutritionNote": "How it works — a fatty acid profile that mimics your skin's natural sebum:",
+      "nutrition": [
+        "Repairs Skin Barrier — Omega 3/6 fill the cracks in a damaged barrier (from harsh soaps, bleaching, sun) so skin stops losing water.",
+        "Non-Comedogenic Moisture — high linoleic acid means it moisturises WITHOUT clogging pores — rare for African oils.",
+        "Elasticity & Collagen — Vitamins A, D, E boost natural elasticity so skin stretches without tearing — why pregnant women love it for the belly.",
+        "Scalp Balance — the same balanced profile feeds the scalp without making it oily or dry — perfect for natural hair."
+      ],
+      "benefits": [
+        "For oily, acne-prone & sensitive skin — the lightest African oil; moisturises without clogging pores or causing pimples.",
+        "Fades dark spots & evens tone — Vitamins A & C help brighten hyperpigmentation and sun spots.",
+        "Anti-aging & fine lines — boosts collagen and softens wrinkles around the eyes, mouth and forehead without grease.",
+        "Soothes redness, eczema & irritated skin — phytosterols and Omega 3 calm inflammation, itching and redness; safe for sensitive skin and babies.",
+        "Natural glow oil — fast-absorbing; gives brown skin a soft glow without shine or oiliness — perfect under makeup.",
+        "Stretch marks & pregnancy belly — the #1 African oil for pregnancy; improves elasticity and helps prevent and soften stretch marks when massaged daily.",
+        "Dry, cracked skin & after-sun — heals dry elbows, knees, heels and sun-damaged skin; cooling and repairing.",
+        "Scars & uneven texture — softens raised scars and smooths rough skin.",
+        "Gentle & safe baby oil — a light, safe, traditional baby massage oil that protects delicate skin.",
+        "After shaving — soothes razor bumps and ingrowns for men and women.",
+        "Moisturises hair without buildup — light enough for daily use; won't make 4C hair heavy or greasy.",
+        "Stops breakage & adds elasticity — hair stretches instead of snapping when combing, helping length retention.",
+        "Dry, itchy scalp & dandruff — moisturises the scalp and reduces flakes without clogging follicles.",
+        "Softens coarse hair & adds shine — smooths the cuticle so hair is soft, shiny and easy to detangle."
+      ],
+      "usage": [
+        "Face (morning & night) — cleanse, take 3-4 drops, warm between palms, and press into slightly damp face, neck and under-eyes.",
+        "For oily/acne skin — use 2 drops at night mixed with 1 drop of tea tree oil. For dry/dull skin — mix 3 drops Baobab + 2 drops Rosehip for an instant glow.",
+        "Under makeup — use as a primer; 2 drops absorb in 1 minute and makeup glides.",
+        "Body & stretch marks — apply to damp skin after shower for a daily glow. For stretch marks and belly, mix 1 tablespoon Baobab + 1 teaspoon Rosehip + 1 tablespoon Shea Butter and massage into belly, thighs, butt and breasts in circular motions for 3 minutes, twice daily (start in month 3 of pregnancy).",
+        "Cracked heels & hands — apply a thick layer at night and wear socks.",
+        "Hair (best light oil for 4C) — use 4-5 drops daily, smoothed onto the ends; it won't make hair white or heavy.",
+        "Scalp massage for growth — 1 tablespoon Baobab + 1 teaspoon Castor Oil + 3 drops Rosemary Essential Oil; massage the scalp for 5 minutes, 3x a week.",
+        "Softening & detangling — mix 1 tablespoon of baobab oil with water in a spray bottle and spritz on hair before combing.",
+        "Hot oil treatment — warm slightly, apply root to tip, cover with a cap for 1 hour, then shampoo out to restore shine.",
+        "Beard oil — 3 drops daily into the beard. For baby — warm a tiny amount between palms and massage gently; avoid the eyes.",
+        "No need to dilute — safe to use pure. Do not heat to high temperatures — it destroys the vitamins."
+      ],
+      "caution": "Extremely safe — one of the gentlest oils; safe for sensitive skin, pregnant women and babies (patch test for baby first). Non-comedogenic — won't clog pores. For external use only. Storage: keeps 2 years — store in a cool, dark place with the lid tight; the golden colour may vary slightly by harvest, which is natural. If it smells rancid, discard. How to spot real cold-pressed baobab: real oil is golden yellow, light, with a nutty earthy smell, absorbs in seconds, and is labelled Adansonia digitata — cold-pressed, virgin, unrefined, from seeds (not pulp). Fake oil is clear, odorless and watery, or very dark brown and greasy — refined or old. Note: oil pressed from the fruit pulp is different — the seed oil is more powerful for skin and hair.",
+      "stock": 20
+    },
+    {
+      "id": "castor-oil",
+      "name": "Cold-Pressed Castor Oil",
+      "category": "Cold-Pressed Oils & Essential Oils",
+      "description": "Thick, glossy cold-pressed castor oil — the classic oil for thickening hair, conditioning the scalp and sealing moisture into 4C hair. Also loved for lashes, brows and softening rough, dry skin.",
+      "price": "KSh 1,200",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Glass bottle of cold-pressed castor oil with castor beans on a natural surface",
+      "stock": 20
+    },
+    {
+      "id": "red-palm-oil",
+      "name": "Red Palm Oil",
+      "category": "Cold-Pressed Oils & Essential Oils",
+      "description": "Traditional unrefined red palm oil, naturally rich in carotenoids (pro-vitamin A) and vitamin E — a nutrient-dense oil for cooking, skin nourishment and natural hair care.",
+      "price": "KSh 1,200",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Jar of deep red unrefined palm oil on a natural surface",
+      "stock": 20
+    },
+    {
+      "id": "fresh-coconuts",
+      "name": "Fresh Coconuts",
+      "category": "Dried Fruits",
+      "description": "Fresh, mature coconuts from coastal Kenya — for coconut water, milk, eating and pressing.",
+      "price": "KSh 75",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Fresh whole coconuts from coastal Kenya on a natural surface",
+      "stock": 20
+    },
+    {
+      "id": "baobab-fruit-powder",
+      "name": "Baobab Fruit Powder",
+      "category": "Dried Fruits",
+      "description": "Pure dried baobab fruit pulp powder — one of nature's richest sources of vitamin C, antioxidants and fibre. Stir into water, tea or smoothies for a tangy, energising boost.",
+      "price": "KSh 300",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Jar of pale baobab fruit powder with dried baobab fruit on a natural surface",
+      "stock": 20
+    },
+    {
+      "id": "turmeric",
+      "name": "Turmeric Powder",
+      "category": "Kitchen Spices",
+      "description": "Pure ground turmeric root — the golden anti-inflammatory spice for cooking, golden milk and wellness teas.",
+      "price": "KSh 200",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Jar of golden turmeric powder with fresh turmeric root on a natural surface",
+      "stock": 20
+    },
+    {
+      "id": "molasses",
+      "name": "Molasses",
+      "category": "Kitchen Spices",
+      "description": "Dark blackstrap molasses — a mineral-rich natural sweetener loaded with iron, calcium, magnesium and potassium. A spoonful a day in warm water or tea.",
+      "price": "KSh 650",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Jar of dark blackstrap molasses on a natural surface",
+      "stock": 20
+    },
+    {
+      "id": "flaxseeds",
+      "name": "Flaxseeds",
+      "category": "Seeds & Nuts",
+      "description": "Whole flaxseeds rich in omega-3, mucilage and dietary fibre — support gentle digestion, heart health and natural cleansing. Grind fresh for the best absorption.",
+      "price": "KSh 600",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Bowl of whole brown flaxseeds on a natural surface",
+      "stock": 20
+    },
+    {
+      "id": "basil-seeds",
+      "name": "Basil Seeds",
+      "category": "Seeds & Nuts",
+      "description": "Basil seeds (tukmaria) — fibre-rich seeds that swell into a soothing gel; great for digestion, hydration and cooling drinks.",
+      "price": "KSh 400",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Bowl of tiny black basil seeds on a natural surface",
+      "stock": 20
+    },
+    {
+      "id": "immune-formula",
+      "name": "Immune Formula",
+      "category": "Plant & Herbal Extracts",
+      "description": "A tailored herbal immune formula blended to strengthen the body's natural defences, resistance and recovery.",
+      "price": "KSh 2,800 (200g)",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Jar of herbal immune formula powder with dried herbs on a natural surface",
+      "stock": 20
+    },
+    {
+      "id": "liver-formula",
+      "name": "Liver Formula",
+      "category": "Plant & Herbal Extracts",
+      "description": "A tailored herbal liver formula supporting natural detoxification, bile flow, regeneration and everyday liver function.",
+      "price": "KSh 2,450 (200g)",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Jar of herbal liver formula powder with milk thistle seeds on a natural surface",
+      "stock": 20
+    },
+    {
+      "id": "edema-formula",
+      "name": "Edema Formula",
+      "category": "Plant & Herbal Extracts",
+      "description": "A tailored herbal formula supporting the body's natural fluid balance — traditionally used to ease swelling, water retention and heavy limbs.",
+      "price": "KSh 2,600 (200g)",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Jar of herbal edema formula powder with dried herbs on a natural surface",
+      "stock": 20
+    },
+    {
+      "id": "curcumin-bee-propolis-formula",
+      "name": "Curcumin & Bee Propolis Formula",
+      "category": "Plant & Herbal Extracts",
+      "description": "A synergistic formula of curcumin (turmeric's golden active) and bee propolis — antioxidants with natural anti-inflammatory and immune-supporting properties.",
+      "price": "KSh 1,350 (100g)",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Jar of curcumin and bee propolis formula powder with turmeric root and propolis on a natural surface",
+      "stock": 20
+    },
+    {
+      "id": "hypodea",
+      "name": "Hypodea",
+      "category": "Plant & Herbal Extracts",
+      "description": "A tailored liquid herbal extract prepared to the clinic's specification, used as part of individual wellness programs.",
+      "price": "KSh 2,400 (500ml)",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Bottle of liquid herbal extract formula on a natural surface",
+      "stock": 20
+    },
+    {
+      "id": "green-power",
+      "name": "Green Power",
+      "category": "Plant & Herbal Extracts",
+      "description": "A mineral-rich green superfood blend of nutrient-dense herbs and greens that alkalises, energises and nourishes the whole body.",
+      "price": "KSh 2,000 (200g)",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Jar of green superfood powder blend with fresh green herbs on a natural surface",
+      "stock": 20
+    },
+    {
+      "id": "goldenseal-plus",
+      "name": "Goldenseal Plus",
+      "category": "Plant & Herbal Extracts",
+      "description": "Goldenseal (hydrastis) blended with complementary herbs — traditionally used to support mucous membranes, natural antimicrobial defence and immune strength.",
+      "price": "KSh 2,400 (200g)",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Jar of goldenseal herbal formula powder with dried goldenseal root on a natural surface",
+      "stock": 20
+    },
+    {
+      "id": "probiotics",
+      "name": "Probiotics",
+      "category": "Supplements",
+      "description": "A high-strength blend of beneficial gut bacteria that replenishes intestinal flora, supports digestion and nutrient absorption, and strengthens natural immunity — especially after cleanses or antibiotics.",
+      "price": "KSh 2,450",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Bottle of probiotic capsules on a natural surface",
+      "stock": 20
+    },
+    {
+      "id": "inulin",
+      "name": "Inulin",
+      "category": "Supplements",
+      "description": "Prebiotic fibre extracted from chicory root that feeds the good bacteria in your gut, promotes regularity and supports calcium absorption. Stir into water, tea or smoothies.",
+      "price": "KSh 1,200 (100g)",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Jar of white inulin prebiotic powder on a natural surface",
+      "stock": 20
+    },
+    {
+      "id": "silymarin-capsules",
+      "name": "Silymarin Capsules",
+      "category": "Supplements",
+      "description": "Silymarin (milk thistle seed extract) in capsules — a classic herbal supporter of liver detoxification, cell protection and regeneration.",
+      "price": "KSh 1,350 (90 caps)",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Bottle of silymarin milk thistle capsules on a natural surface",
+      "stock": 20
+    },
+    {
+      "id": "zinc-capsules",
+      "name": "Zinc Capsules",
+      "category": "Supplements",
+      "description": "Essential zinc capsules supporting immune function, wound healing, skin clarity and the senses of taste and smell.",
+      "price": "KSh 600 (30 caps)",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Bottle of zinc capsules on a natural surface",
+      "stock": 20
+    },
+    {
+      "id": "epsom-salt",
+      "name": "Epsom Salt",
+      "category": "Wellness Essentials",
+      "description": "Pure magnesium sulphate — dissolves into a relaxing detox bath that eases sore muscles, draws out tension and softens skin.",
+      "price": "KSh 450 (1kg)",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Bag of white epsom salt crystals on a natural surface",
+      "stock": 20
+    },
+    {
+      "id": "dmso",
+      "name": "DMSO",
+      "category": "Wellness Essentials",
+      "description": "Pharmaceutical-grade DMSO (dimethyl sulphoxide) — a natural sulphur-rich solvent traditionally applied topically for deep-tissue comfort and as a carrier for other compounds. External use only.",
+      "price": "KSh 5,300 (500ml)",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Bottle of pharmaceutical grade DMSO liquid on a natural surface",
+      "stock": 20
+    },
+    {
+      "id": "gloves",
+      "name": "Gloves",
+      "category": "Wellness Essentials",
+      "description": "Protective gloves for hygienic preparation, treatments and care routines.",
+      "price": "KSh 650",
+      "availability": "In Stock",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Pair of protective gloves on a natural surface",
+      "stock": 20
+    },
+    {
+      "id": "caregiver-charges-4-sessions",
+      "name": "Caregiver Charges (4 Sessions)",
+      "category": "Wellness Services",
+      "type": "service",
+      "description": "Professional caregiver support — a package of 4 dedicated sessions assisting with treatments, enema programs and daily care.",
+      "price": "KSh 4,800",
+      "availability": "Bookable",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Caregiver supporting a wellness client during a treatment session"
+    },
+    {
+      "id": "enema-kits-4-sessions",
+      "name": "Enema Kits (4 Sessions)",
+      "category": "Wellness Services",
+      "type": "service",
+      "description": "A package of 4 guided enema-kit sessions used in colon cleansing and detox programs.",
+      "price": "KSh 1,600",
+      "availability": "Bookable",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Enema kit equipment prepared for a wellness session"
+    },
+    {
+      "id": "full-body-scrubbing",
+      "name": "Full Body Scrubbing",
+      "category": "Wellness Services",
+      "type": "service",
+      "description": "A full-body scrubbing treatment that exfoliates, boosts circulation and leaves skin smooth, soft and renewed. Price set at checkout.",
+      "price": "KSh 0",
+      "availability": "Bookable",
+      "featured": false,
+      "image": "/assets/no_image.png",
+      "alt": "Full body scrubbing treatment in a natural wellness setting"
     }
-    
   ]
 }

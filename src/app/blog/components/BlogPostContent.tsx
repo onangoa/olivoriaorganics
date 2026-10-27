@@ -70,6 +70,22 @@ export default function BlogPostContent({ post, relatedPosts }: BlogPostContentP
             sizes="(max-width: 768px) 100vw, 768px" />
         </div>
 
+        {/* Photo Gallery */}
+        {post.gallery && post.gallery.length > 0 &&
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-3 scroll-reveal">
+          {post.gallery.map((photo, i) =>
+          <div key={i} className="relative rounded-2xl overflow-hidden border border-border" style={{ aspectRatio: '4/3' }}>
+              <AppImage
+                src={photo}
+                alt={`${post.alt} — photo ${i + 2}`}
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 50vw, 33vw" />
+            </div>
+          )}
+        </div>
+        }
+
         {/* Post Body */}
         <div className="mt-12 space-y-10">
           {post.sections.map((section, i) =>

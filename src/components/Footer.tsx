@@ -3,9 +3,9 @@ import Link from 'next/link';
 import AppLogo from '@/components/ui/AppLogo';
 import { getProductCategories } from '@/lib/content';
 
-export default function Footer() {
+export default async function Footer() {
   const year = 2026;
-  const productCategories = getProductCategories();
+  const productCategories = await getProductCategories();
 
   return (
     <footer className="border-t border-border bg-background pt-16 pb-8">

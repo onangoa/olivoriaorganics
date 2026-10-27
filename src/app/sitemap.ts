@@ -1,16 +1,23 @@
 import { MetadataRoute } from 'next';
-import { getBlogPosts } from '@/lib/content';
+import { getBlogPosts, getProducts } from '@/lib/content';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const [posts, products] = await Promise.all([getBlogPosts(), getProducts()]);
 
   return [
     { url: baseUrl, lastModified: new Date(), priority: 1.0, changeFrequency: 'weekly' },
     { url: `${baseUrl}/products`, lastModified: new Date(), priority: 0.9, changeFrequency: 'weekly' },
+    ...products.map((product) => ({
+      url: `${baseUrl}/products/${product.id}`,
+      lastModified: new Date(),
+      priority: 0.6,
+      changeFrequency: 'weekly' as const,
+    })),
     { url: `${baseUrl}/consultations`, lastModified: new Date(), priority: 0.8, changeFrequency: 'monthly' },
     { url: `${baseUrl}/health-reform`, lastModified: new Date(), priority: 0.8, changeFrequency: 'monthly' },
     { url: `${baseUrl}/blog`, lastModified: new Date(), priority: 0.7, changeFrequency: 'weekly' },
-    ...getBlogPosts().map((post) => ({
+    ...posts.map((post) => ({
       url: `${baseUrl}/blog/${post.slug}`,
       lastModified: new Date(),
       priority: 0.6,

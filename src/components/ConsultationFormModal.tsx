@@ -24,6 +24,8 @@ interface ConsultationFormModalProps {
 
 export default function ConsultationFormModal({ open, onClose }: ConsultationFormModalProps) {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: '',
     contact: '',
@@ -68,10 +70,26 @@ export default function ConsultationFormModal({ open, onClose }: ConsultationFor
     });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Submission handling is not implemented yet — record the request locally.
-    setSubmitted(true);
+    setSubmitting(true);
+    setError(null);
+    try {
+      const res = await fetch('/api/consultations', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        throw new Error(data?.error || 'Submission failed');
+      }
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const showSubcategory = CARE_TYPES.includes(formData.type);
@@ -241,11 +259,21 @@ export default function ConsultationFormModal({ open, onClose }: ConsultationFor
               <p className="text-xs text-muted-foreground">
                 Your information is kept private and will only be used to arrange your consultation.
               </p>
+              {error && (
+                <div className="p-3 rounded-lg bg-red-50 border border-red-200 text-red-700 text-xs leading-relaxed" role="alert">
+                  {error} You can also{' '}
+                  <button type="button" onClick={handleWhatsApp} className="underline font-medium">
+                    reach us on WhatsApp
+                  </button>
+                  .
+                </div>
+              )}
               <button
                 type="submit"
-                className="w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-sm shadow-md transition-all duration-200 hover:-translate-y-0.5"
+                disabled={submitting}
+                className="w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-sm shadow-md transition-all duration-200 hover:-translate-y-0.5 disabled:opacity-60 disabled:hover:translate-y-0 disabled:cursor-not-allowed"
               >
-                Submit Request
+                {submitting ? 'Submitting…' : 'Submit Request'}
               </button>
             </form>
             <div className="mt-5 pt-5 border-t border-border text-center">

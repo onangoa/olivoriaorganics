@@ -10,8 +10,8 @@ export const metadata: Metadata = {
   description: 'Practical wisdom for natural living from OlivoriaOrganics — nourishing foods, herbal teas, kitchen spices, botanicals, and everyday habits that nurture body, mind, and spirit.',
 };
 
-export default function BlogPage() {
-  const posts = getBlogPosts();
+export default async function BlogPage() {
+  const posts = await getBlogPosts();
 
   return (
     <main className="min-h-screen bg-background">

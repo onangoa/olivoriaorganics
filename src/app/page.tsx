@@ -15,8 +15,8 @@ export const metadata: Metadata = {
   description: 'Discover premium organic products, wellness consultations, and health education rooted in wholistic living. OlivoriaOrganics — nourishing body, mind, and spirit.',
 };
 
-export default function HomePage() {
-  const featuredProducts = getFeaturedProducts(6);
+export default async function HomePage() {
+  const featuredProducts = await getFeaturedProducts(6);
 
   return (
     <main className="min-h-screen bg-background">

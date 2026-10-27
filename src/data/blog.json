@@ -9,8 +9,9 @@
     "and optional 'list' of bullet points).",
     "Writing tips: keep paragraphs short (2-4 sentences), one idea per section, use lists for practical",
     "tips, keep the tone warm and educational, and end with a gentle consultation invitation.",
-    "After adding a post, run 'npm run build' — the page at /blog/<slug> and its sitemap entry are",
-    "generated automatically."
+    "NOTE: the live blog is stored in the database and managed from the admin dashboard (/admin/blog).",
+    "This file is only used as seed data by 'npm run db:seed' (existing rows are never overwritten).",
+    "Keep the list ordered newest-first."
   ],
   "posts": [
     {

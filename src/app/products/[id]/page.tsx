@@ -10,13 +10,9 @@ interface ProductPageProps {
   params: Promise<{ id: string }>;
 }
 
-export function generateStaticParams() {
-  return getProducts().map((product) => ({ id: product.id }));
-}
-
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
   const { id } = await params;
-  const product = getProductById(id);
+  const product = await getProductById(id);
   if (!product) {
     return { title: 'Product Not Found — Olivoria Organics' };
   }
@@ -28,11 +24,12 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const { id } = await params;
-  const product = getProductById(id);
+  const product = await getProductById(id);
   if (!product) notFound();
 
-  const sameCategory = getProducts().filter((p) => p.id !== product.id && p.category === product.category);
-  const others = getProducts().filter((p) => p.id !== product.id && p.category !== product.category);
+  const allProducts = await getProducts();
+  const sameCategory = allProducts.filter((p) => p.id !== product.id && p.category === product.category);
+  const others = allProducts.filter((p) => p.id !== product.id && p.category !== product.category);
   const relatedProducts = [...sameCategory, ...others].slice(0, 3);
 
   return (
