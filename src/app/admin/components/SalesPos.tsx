@@ -4,7 +4,7 @@ import React, { useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { PhotoIcon, XMarkIcon } from '@heroicons/react/24/outline';
-import { createSale, type PaymentStatus } from '@/app/admin/sale-actions';
+import { createSale, updateProspectSale, type PaymentStatus } from '@/app/admin/sale-actions';
 import { formatKES } from '@/lib/money';
 
 export interface PosVariant {
@@ -96,23 +96,48 @@ function playCartSound(kind: 'add' | 'remove') {
   }
 }
 
-interface SalesPosProps {
-  products: PosProduct[];
+export interface EditableSale {
+  id: string;
+  invoiceNumber: number;
+  customerName: string;
+  customerContact: string;
+  customerEmail: string;
+  taxRate: number;
+  notes: string;
+  items: { productId: string; variantLabel: string | null; unitPrice: number; quantity: number }[];
 }
 
-export default function SalesPos({ products }: SalesPosProps) {
+interface SalesPosProps {
+  products: PosProduct[];
+  editSale?: EditableSale;
+}
+
+export default function SalesPos({ products, editSale }: SalesPosProps) {
   const router = useRouter();
+  const isEdit = Boolean(editSale);
   const [search, setSearch] = useState('');
   const [activeCategory, setActiveCategory] = useState('All');
-  const [cart, setCart] = useState<CartLine[]>([]);
+  const [cart, setCart] = useState<CartLine[]>(() => {
+    if (!editSale) return [];
+    return editSale.items.map((item) => {
+      lineKey += 1;
+      return {
+        key: lineKey,
+        productId: item.productId,
+        variantLabel: item.variantLabel ?? '',
+        unitPrice: String(item.unitPrice),
+        quantity: item.quantity,
+      };
+    });
+  });
   const [cartOpen, setCartOpen] = useState(false);
-  const [customerName, setCustomerName] = useState('Walk-in Customer');
-  const [customerContact, setCustomerContact] = useState('');
-  const [customerEmail, setCustomerEmail] = useState('');
-  const [paymentStatus, setPaymentStatus] = useState<PaymentStatus>('paid');
-  const [taxRate, setTaxRate] = useState('0');
-  const [notes, setNotes] = useState('');
-  const [showOptions, setShowOptions] = useState(false);
+  const [customerName, setCustomerName] = useState(editSale?.customerName ?? 'Walk-in Customer');
+  const [customerContact, setCustomerContact] = useState(editSale?.customerContact ?? '');
+  const [customerEmail, setCustomerEmail] = useState(editSale?.customerEmail ?? '');
+  const [paymentStatus, setPaymentStatus] = useState<PaymentStatus>(isEdit ? 'prospect' : 'paid');
+  const [taxRate, setTaxRate] = useState(editSale ? String(editSale.taxRate) : '0');
+  const [notes, setNotes] = useState(editSale?.notes ?? '');
+  const [showOptions, setShowOptions] = useState(Boolean(editSale));
   const [error, setError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [created, setCreated] = useState<{
@@ -210,11 +235,10 @@ export default function SalesPos({ products }: SalesPosProps) {
     }
     setSaving(true);
     try {
-      const result = await createSale({
+      const payload = {
         customerName,
         customerContact: customerContact || undefined,
         customerEmail: customerEmail || undefined,
-        paymentStatus,
         taxRate: Number(taxRate) || 0,
         notes: notes || undefined,
         items: cart.map((line) => ({
@@ -223,7 +247,11 @@ export default function SalesPos({ products }: SalesPosProps) {
           quantity: line.quantity,
           unitPrice: Number(line.unitPrice) || 0,
         })),
-      });
+      };
+      const result =
+        isEdit && editSale
+          ? await updateProspectSale(editSale.id, payload)
+          : await createSale({ ...payload, paymentStatus });
       if (!result.ok) {
         setError(result.error);
         setSaving(false);
@@ -234,14 +262,16 @@ export default function SalesPos({ products }: SalesPosProps) {
         invoiceNumber: result.invoiceNumber,
         invoiceStatus: result.invoiceStatus,
       });
-      setCart([]);
-      setCustomerName('Walk-in Customer');
-      setCustomerContact('');
-      setCustomerEmail('');
-      setPaymentStatus('paid');
-      setTaxRate('0');
-      setNotes('');
-      setShowOptions(false);
+      if (!isEdit) {
+        setCart([]);
+        setCustomerName('Walk-in Customer');
+        setCustomerContact('');
+        setCustomerEmail('');
+        setPaymentStatus('paid');
+        setTaxRate('0');
+        setNotes('');
+        setShowOptions(false);
+      }
       router.refresh();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Something went wrong.');
@@ -254,6 +284,11 @@ export default function SalesPos({ products }: SalesPosProps) {
 
   const renderCartContents = (idPrefix: string, onCloseSheet?: () => void) => (
     <>
+      {isEdit && editSale && (
+        <p className="text-xs font-semibold text-accent">
+          Editing invoice #{String(editSale.invoiceNumber).padStart(4, '0')} — prospect (pending)
+        </p>
+      )}
       <div className="flex items-center justify-between gap-3">
         <h2 className="font-serif font-semibold text-lg text-foreground">
           Cart{' '}
@@ -379,31 +414,43 @@ export default function SalesPos({ products }: SalesPosProps) {
 
       <div>
         <p className="text-sm font-medium text-foreground mb-1.5">Payment</p>
-        <div className="grid grid-cols-3 gap-2" role="group" aria-label="Payment status">
-          {PAYMENT_OPTIONS.map((option) => (
-            <button
-              key={option.value}
-              type="button"
-              onClick={() => setPaymentStatus(option.value)}
-              className={`px-3 py-2.5 rounded-xl text-sm font-semibold border transition-colors ${
-                paymentStatus === option.value
-                  ? 'bg-foreground text-background border-foreground'
-                  : 'border-border text-muted-foreground hover:text-foreground hover:bg-muted'
-              }`}
-            >
-              {option.label}
-            </button>
-          ))}
-        </div>
-        {paymentStatus === 'prospect' && (
-          <p className="text-[11px] text-muted-foreground mt-1.5">
-            Unconfirmed sale — pending invoice, stock untouched.
+        {isEdit ? (
+          <p className="text-xs text-muted-foreground">
+            Prospect quotation — saving keeps the invoice pending. Complete it on the{' '}
+            <Link href="/admin/invoices" className="text-primary underline underline-offset-2">
+              Invoices
+            </Link>{' '}
+            page to convert it and reduce stock.
           </p>
-        )}
-        {paymentStatus === 'credit' && (
-          <p className="text-[11px] text-muted-foreground mt-1.5">
-            Stock is reduced now; payments can be recorded in stages later.
-          </p>
+        ) : (
+          <>
+            <div className="grid grid-cols-3 gap-2" role="group" aria-label="Payment status">
+              {PAYMENT_OPTIONS.map((option) => (
+                <button
+                  key={option.value}
+                  type="button"
+                  onClick={() => setPaymentStatus(option.value)}
+                  className={`px-3 py-2.5 rounded-xl text-sm font-semibold border transition-colors ${
+                    paymentStatus === option.value
+                      ? 'bg-foreground text-background border-foreground'
+                      : 'border-border text-muted-foreground hover:text-foreground hover:bg-muted'
+                  }`}
+                >
+                  {option.label}
+                </button>
+              ))}
+            </div>
+            {paymentStatus === 'prospect' && (
+              <p className="text-[11px] text-muted-foreground mt-1.5">
+                Unconfirmed sale — pending invoice, stock untouched.
+              </p>
+            )}
+            {paymentStatus === 'credit' && (
+              <p className="text-[11px] text-muted-foreground mt-1.5">
+                Stock is reduced now; payments can be recorded in stages later.
+              </p>
+            )}
+          </>
         )}
       </div>
 
@@ -507,7 +554,11 @@ export default function SalesPos({ products }: SalesPosProps) {
         disabled={saving || cart.length === 0}
         className="w-full px-7 py-3.5 rounded-full bg-primary text-primary-foreground font-semibold text-sm shadow-md transition-all duration-200 hover:-translate-y-0.5 disabled:opacity-60 disabled:hover:translate-y-0 disabled:cursor-not-allowed"
       >
-        {saving ? 'Recording…' : `Complete Sale · ${formatKES(totals.total)}`}
+        {saving
+          ? 'Recording…'
+          : isEdit
+            ? `Save Changes · ${formatKES(totals.total)}`
+            : `Complete Sale · ${formatKES(totals.total)}`}
       </button>
 
       {error && (
@@ -524,7 +575,19 @@ export default function SalesPos({ products }: SalesPosProps) {
           className="p-3 rounded-lg bg-green-50 border border-green-200 text-green-800 text-sm"
           role="status"
         >
-          {created.invoiceStatus === 'completed' ? (
+          {isEdit ? (
+            <>
+              Changes saved — invoice #{String(created.invoiceNumber).padStart(4, '0')} is still
+              pending and stock is untouched.{' '}
+              <a
+                href={`/api/admin/invoices/${created.invoiceId}/pdf`}
+                className="font-semibold underline underline-offset-2"
+              >
+                Download the updated PDF
+              </a>
+              .
+            </>
+          ) : created.invoiceStatus === 'completed' ? (
             <>
               Sale recorded — invoice #{String(created.invoiceNumber).padStart(4, '0')} is completed
               and stock has been reduced.{' '}

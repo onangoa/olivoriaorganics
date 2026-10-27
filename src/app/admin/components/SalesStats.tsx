@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useMemo, useState } from 'react';
+import Link from 'next/link';
 import RecordPaymentButton, {
   type PaymentRecord,
 } from '@/app/admin/components/RecordPaymentButton';
@@ -399,14 +400,25 @@ export default function SalesStats({ sales, bookings, invoices }: SalesStatsProp
                               {formatKES(sale.total)}
                             </td>
                             <td className="px-5 py-4 text-right">
-                              {sale.invoice ? (
-                                <a
-                                  href={`/api/admin/invoices/${sale.invoice.id}/pdf`}
-                                  className="text-xs font-semibold text-primary underline underline-offset-2"
-                                >
-                                  Download
-                                </a>
-                              ) : null}
+                              <div className="flex items-center justify-end gap-4">
+                                {sale.paymentStatus === 'prospect' &&
+                                  sale.invoice?.status === 'pending' && (
+                                    <Link
+                                      href={`/admin/sales/${sale.id}/edit`}
+                                      className="text-xs font-semibold text-primary underline underline-offset-2"
+                                    >
+                                      Edit
+                                    </Link>
+                                  )}
+                                {sale.invoice ? (
+                                  <a
+                                    href={`/api/admin/invoices/${sale.invoice.id}/pdf`}
+                                    className="text-xs font-semibold text-primary underline underline-offset-2"
+                                  >
+                                    Download
+                                  </a>
+                                ) : null}
+                              </div>
                             </td>
                           </tr>
                         ))}
@@ -452,12 +464,23 @@ export default function SalesStats({ sales, bookings, invoices }: SalesStatsProp
                           )}
                         </span>
                         {sale.invoice && (
-                          <a
-                            href={`/api/admin/invoices/${sale.invoice.id}/pdf`}
-                            className="text-xs font-semibold text-primary underline underline-offset-2"
-                          >
-                            PDF
-                          </a>
+                          <span className="flex items-center gap-4">
+                            {sale.paymentStatus === 'prospect' &&
+                              sale.invoice.status === 'pending' && (
+                                <Link
+                                  href={`/admin/sales/${sale.id}/edit`}
+                                  className="text-xs font-semibold text-primary underline underline-offset-2"
+                                >
+                                  Edit
+                                </Link>
+                              )}
+                            <a
+                              href={`/api/admin/invoices/${sale.invoice.id}/pdf`}
+                              className="text-xs font-semibold text-primary underline underline-offset-2"
+                            >
+                              PDF
+                            </a>
+                          </span>
                         )}
                       </div>
                       {sale.paymentStatus === 'credit' && (

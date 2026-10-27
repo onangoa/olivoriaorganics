@@ -39,6 +39,10 @@ export type SaleActionResult =
     }
   | { ok: false; error: string };
 
+export type UpdateProspectActionResult =
+  | { ok: true; invoiceId: string; invoiceNumber: number; invoiceStatus: 'pending' }
+  | { ok: false; error: string };
+
 export type PaymentActionResult = { ok: true; fullyPaid: boolean } | { ok: false; error: string };
 
 const round2 = (value: number) => Math.round((value + Number.EPSILON) * 100) / 100;
@@ -63,6 +67,75 @@ interface StockItemRow {
   name: string;
   variantLabel: string | null;
   quantity: number;
+}
+
+type GroupedItems = Map<
+  string,
+  { quantity: number; unitPrice: number; variantLabel: string | null }
+>;
+
+function groupSaleItems(
+  items: SaleItemInput[]
+): { ok: true; grouped: GroupedItems } | { ok: false; error: string } {
+  const grouped: GroupedItems = new Map();
+  for (const item of items) {
+    if (!item.productId?.trim())
+      return { ok: false, error: 'A line item has no product selected.' };
+    const quantity = Math.floor(Number(item.quantity));
+    if (!Number.isFinite(quantity) || quantity < 1) {
+      return { ok: false, error: 'Each item quantity must be at least 1.' };
+    }
+    const unitPrice = round2(Number(item.unitPrice));
+    if (!Number.isFinite(unitPrice) || unitPrice < 0) {
+      return { ok: false, error: 'Unit prices must be zero or more.' };
+    }
+    const label = item.variantLabel?.trim() || null;
+    const key = `${item.productId}::${label ?? ''}`;
+    const existing = grouped.get(key);
+    if (existing) existing.quantity += quantity;
+    else grouped.set(key, { quantity, unitPrice, variantLabel: label });
+  }
+  return { ok: true, grouped };
+}
+
+async function resolveLineItems(
+  grouped: GroupedItems
+): Promise<{ ok: true; lineItems: LineItem[] } | { ok: false; error: string }> {
+  const productIds = [...new Set([...grouped.keys()].map((key) => key.split('::')[0]))];
+  const products = await prisma.product.findMany({
+    where: { id: { in: productIds } },
+    select: { id: true, name: true },
+  });
+  const productMap = new Map(products.map((product) => [product.id, product]));
+
+  for (const productId of productIds) {
+    if (!productMap.has(productId)) {
+      return { ok: false, error: `Product "${productId}" no longer exists.` };
+    }
+  }
+
+  const lineItems = [...grouped.entries()].map(([key, item]) => {
+    const productId = key.split('::')[0];
+    const product = productMap.get(productId)!;
+    return {
+      productId,
+      name: product.name,
+      variantLabel: item.variantLabel,
+      unitPrice: item.unitPrice,
+      quantity: item.quantity,
+      total: round2(item.unitPrice * item.quantity),
+    };
+  });
+  return { ok: true, lineItems };
+}
+
+interface LineItem {
+  productId: string;
+  name: string;
+  variantLabel: string | null;
+  unitPrice: number;
+  quantity: number;
+  total: number;
 }
 
 async function reduceStockForItems(
@@ -124,55 +197,13 @@ export async function createSale(input: SaleInput): Promise<SaleActionResult> {
       return { ok: false, error: 'Add at least one product to the sale.' };
     }
 
-    const grouped = new Map<
-      string,
-      { quantity: number; unitPrice: number; variantLabel: string | null }
-    >();
-    for (const item of input.items) {
-      if (!item.productId?.trim())
-        return { ok: false, error: 'A line item has no product selected.' };
-      const quantity = Math.floor(Number(item.quantity));
-      if (!Number.isFinite(quantity) || quantity < 1) {
-        return { ok: false, error: 'Each item quantity must be at least 1.' };
-      }
-      const unitPrice = round2(Number(item.unitPrice));
-      if (!Number.isFinite(unitPrice) || unitPrice < 0) {
-        return { ok: false, error: 'Unit prices must be zero or more.' };
-      }
-      const label = item.variantLabel?.trim() || null;
-      const key = `${item.productId}::${label ?? ''}`;
-      const existing = grouped.get(key);
-      if (existing) existing.quantity += quantity;
-      else grouped.set(key, { quantity, unitPrice, variantLabel: label });
-    }
-
-    const productIds = [...new Set([...grouped.keys()].map((key) => key.split('::')[0]))];
-    const products = await prisma.product.findMany({
-      where: { id: { in: productIds } },
-      select: { id: true, name: true },
-    });
-    const productMap = new Map(products.map((product) => [product.id, product]));
-
-    for (const productId of productIds) {
-      if (!productMap.has(productId)) {
-        return { ok: false, error: `Product "${productId}" no longer exists.` };
-      }
-    }
+    const grouped = groupSaleItems(input.items);
+    if (!grouped.ok) return { ok: false, error: grouped.error };
+    const resolved = await resolveLineItems(grouped.grouped);
+    if (!resolved.ok) return { ok: false, error: resolved.error };
+    const lineItems = resolved.lineItems;
 
     const taxRate = round2(Math.max(0, Math.min(100, Number(input.taxRate) || 0)));
-    const lineItems = [...grouped.entries()].map(([key, item]) => {
-      const productId = key.split('::')[0];
-      const product = productMap.get(productId)!;
-      return {
-        productId,
-        name: product.name,
-        variantLabel: item.variantLabel,
-        unitPrice: item.unitPrice,
-        quantity: item.quantity,
-        total: round2(item.unitPrice * item.quantity),
-      };
-    });
-
     const subtotal = round2(lineItems.reduce((sum, item) => sum + item.total, 0));
     const tax = round2((subtotal * taxRate) / 100);
     const total = round2(subtotal + tax);
@@ -240,6 +271,104 @@ export async function createSale(input: SaleInput): Promise<SaleActionResult> {
     };
   } catch (error) {
     return { ok: false, error: error instanceof Error ? error.message : 'Failed to record sale.' };
+  }
+}
+
+export interface ProspectSaleInput {
+  customerName: string;
+  customerContact?: string;
+  customerEmail?: string;
+  taxRate?: number;
+  notes?: string;
+  items: SaleItemInput[];
+}
+
+// Edits an unconfirmed (prospect) sale — customer details, notes, tax and the
+// full cart. Paid/credit sales are locked because their invoices are already
+// completed and stock has moved.
+export async function updateProspectSale(
+  id: string,
+  input: ProspectSaleInput
+): Promise<UpdateProspectActionResult> {
+  try {
+    const userEmail = await requireSession();
+
+    if (!input.customerName?.trim()) return { ok: false, error: 'Customer name is required.' };
+    if (!Array.isArray(input.items) || input.items.length === 0) {
+      return { ok: false, error: 'Add at least one product to the sale.' };
+    }
+
+    const sale = await prisma.sale.findUnique({
+      where: { id },
+      include: { invoice: true },
+    });
+    if (!sale) return { ok: false, error: 'Sale not found.' };
+    const invoice = sale.invoice;
+    if (sale.paymentStatus !== 'prospect' || !invoice || invoice.status !== 'pending') {
+      return {
+        ok: false,
+        error:
+          'Only prospect sales with a pending invoice can be edited — this one is already confirmed.',
+      };
+    }
+
+    const grouped = groupSaleItems(input.items);
+    if (!grouped.ok) return { ok: false, error: grouped.error };
+    const resolved = await resolveLineItems(grouped.grouped);
+    if (!resolved.ok) return { ok: false, error: resolved.error };
+    const lineItems = resolved.lineItems;
+
+    const taxRate = round2(Math.max(0, Math.min(100, Number(input.taxRate) || 0)));
+    const subtotal = round2(lineItems.reduce((sum, item) => sum + item.total, 0));
+    const tax = round2((subtotal * taxRate) / 100);
+    const total = round2(subtotal + tax);
+
+    await prisma.$transaction(async (tx) => {
+      await tx.saleItem.deleteMany({ where: { saleId: sale.id } });
+      await tx.sale.update({
+        where: { id: sale.id },
+        data: {
+          customerName: input.customerName.trim(),
+          customerContact: input.customerContact?.trim() || null,
+          customerEmail: input.customerEmail?.trim() || null,
+          taxRate,
+          tax,
+          subtotal,
+          total,
+          notes: input.notes?.trim() || null,
+          items: {
+            create: lineItems.map((item) => ({
+              productId: item.productId,
+              name: item.name,
+              variantLabel: item.variantLabel,
+              unitPrice: item.unitPrice,
+              quantity: item.quantity,
+              total: item.total,
+            })),
+          },
+        },
+      });
+    });
+
+    await logActivity({
+      action: 'sale.update',
+      entity: 'Sale',
+      entityId: sale.id,
+      message: `Updated the prospect sale for "${input.customerName.trim()}" — ${formatKES(total)} (invoice #${String(invoice.number).padStart(4, '0')}, pending) — ${lineItems.length} item${lineItems.length === 1 ? '' : 's'}.`,
+      userEmail,
+    });
+    revalidateSalePages();
+    return {
+      ok: true,
+      invoiceId: invoice.id,
+      invoiceNumber: invoice.number,
+      invoiceStatus: 'pending' as const,
+    };
+  } catch (error) {
+    return {
+      ok: false,
+      error: error instanceof Error ? error.message : 'Failed to update the prospect sale.',
+    };
   }
 }
 
